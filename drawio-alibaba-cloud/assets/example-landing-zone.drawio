@@ -1,0 +1,1226 @@
+<mxfile host="Electron" agent="drawio">
+  <diagram name="Option 1 - Cloud Native" id="opt1-v3">
+    <mxGraphModel dx="3423" dy="2017" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2700" pageHeight="1720" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontColor=#1B3A57;" value="&lt;b&gt;Example-Corp Cloud Landing Zone — Option 1 · Cloud Native&lt;/b&gt;&amp;nbsp;&amp;nbsp;(Anti-DDoS Pro + Alibaba Cloud Firewall + Alibaba WAF + F5 BIG-IP VE) · me-central-1 (Riyadh)" vertex="1">
+          <mxGeometry height="30" width="2620" x="40" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="net-internet" parent="1" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;image=img/lib/active_directory/internet_cloud.svg;" value="" vertex="1">
+          <mxGeometry height="110" width="160" x="120" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="net-internet-lbl" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:13px;&quot;&gt;&lt;b&gt;Internet&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="120" x="140" y="135" as="geometry" />
+        </mxCell>
+        <mxCell id="net-users" parent="1" style="shape=mxgraph.aws3.office_building;fillColor=#7D7C7C;gradientColor=none;outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;" value="" vertex="1">
+          <mxGeometry height="80" width="33" x="320" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="net-users-lbl" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;Example-Corp Public Users&lt;/b&gt;&lt;br&gt;Partners · Admins · SSL-VPN&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="160" x="300" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="ivolve-rect" parent="1" style="dashed=1;dashPattern=6 6;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#A03030;fillColor=#FFF5F5;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="130" width="320" x="540" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ivolve-icon" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#A03030;strokeColor=none;shape=mxgraph.alibaba_cloud.vpc_virtual_private_cloud;" value="" vertex="1">
+          <mxGeometry height="20" width="31.15" x="548" y="85" as="geometry" />
+        </mxCell>
+        <mxCell id="ivolve-name" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#A03030;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;Legacy-Tenant VPC (legacy tenant)&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="270" x="585" y="85" as="geometry" />
+        </mxCell>
+        <mxCell id="ivolve-cidr" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#A03030;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;10.138.0.0/16&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="270" x="585" y="99" as="geometry" />
+        </mxCell>
+        <mxCell id="iv-s1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#A03030;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="565" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="iv-s1l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;Exchange&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="45" x="555" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="iv-s2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#A03030;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="630" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="iv-s2l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;AD-VM&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="45" x="620" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="iv-s3" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#A03030;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="695" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="iv-s3l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;Veeam&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="45" x="685" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="iv-s4" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#A03030;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="760" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="iv-s4l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;NextCloud&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="55" x="745" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="ivolve-note" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#A03030;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Temporary CEN attach during Exchange seed migration window only — removed at Legacy-Tenant cutover&lt;/font&gt;" vertex="1">
+          <mxGeometry height="26" width="310" x="545" y="178" as="geometry" />
+        </mxCell>
+        <mxCell id="hq-rect" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F4F6F8;strokeColor=#5A6573;strokeWidth=2;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="500" width="240" x="2440" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="hq-lbl" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#1B3A57;" value="&lt;font style=&quot;font-size:11px;&quot;&gt;&lt;b&gt;HQ Riyadh DC&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="240" x="2440" y="545" as="geometry" />
+        </mxCell>
+        <mxCell id="hq-sub" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:9px;font-style:italic;&quot;&gt;PA-5220 · FG-1500D · AD · F5 GTM&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="240" x="2440" y="565" as="geometry" />
+        </mxCell>
+        <mxCell id="hq-dc-img" parent="1" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/storage/Datacenter_Server_Storage_Unit_Large.svg;" value="" vertex="1">
+          <mxGeometry height="80" width="80" x="2470" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="hq-dc-lbl" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;Servers · DCs&lt;/b&gt;&lt;br&gt;10.200.100.0/24&lt;/font&gt;" vertex="1">
+          <mxGeometry height="26" width="240" x="2440" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="hq-office" parent="1" style="shape=mxgraph.aws3.office_building;fillColor=#7D7C7C;gradientColor=none;outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;" value="" vertex="1">
+          <mxGeometry height="70" width="33" x="2475" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="hq-office-lbl" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;HQ Office Users&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="240" x="2440" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="hq-mpls" parent="1" style="image;html=1;image=img/lib/clip_art/networking/Router_128x128.png;" value="" vertex="1">
+          <mxGeometry height="40" width="40" x="2540" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="hq-mpls-lbl" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;MPLS Router&lt;/b&gt;&lt;br&gt;Telco&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="80" x="2530" y="755" as="geometry" />
+        </mxCell>
+        <mxCell id="hq-branches" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5A6573;dashed=1;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;10 Branches&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;font-style:italic;&quot;&gt;Branch-Site-A · Branch-Site-B · Site-C&lt;br&gt;10.201–10.211.0.0/16&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="200" x="2460" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="hq-onprem-note" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:9px;font-style:italic;&quot;&gt;On-prem authoritative domain:&lt;br&gt;&lt;b&gt;example.local&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="240" x="2440" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="hq-bgp" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:9px;font-style:italic;&quot;&gt;BGP ASN (on-prem) — peers with VBR&lt;br&gt;Branches → MPLS → HQ → cloud&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="240" x="2440" y="930" as="geometry" />
+        </mxCell>
+        <mxCell id="hq-publicip" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#1B3A57;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;Example-Corp public IP block&lt;/b&gt;&lt;br&gt;203.0.113.32/27 · 203.0.113.48–54&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="240" x="2440" y="970" as="geometry" />
+        </mxCell>
+        <mxCell id="hq-spacer" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="20" width="240" x="2440" y="1005" as="geometry" />
+        </mxCell>
+        <mxCell id="region" parent="1" style="dashed=0;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF6A00;strokeWidth=3;fillColor=#FFFFFF;" value="" vertex="1">
+          <mxGeometry height="1630" width="2370" x="40" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="region-lbl" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#FF6A00;spacingLeft=10;" value="&lt;font style=&quot;font-size:13px;&quot;&gt;&lt;b&gt;Alibaba Cloud · me-central-1 (Riyadh)&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="22" width="800" x="40" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="region-badge" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6A00;strokeColor=#FF6A00;fontColor=#FFFFFF;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;ALIBABA CLOUD&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="160" x="2240" y="253" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-band" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF5EB;strokeColor=#FFD3AA;dashed=1;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="180" width="2290" x="80" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-lbl" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#B24E00;spacingLeft=8;" value="&lt;font style=&quot;font-size:11px;&quot;&gt;&lt;b&gt;Managed Edge Security Services&lt;/b&gt; — Anti-DDoS Pro · Cloud Firewall · Alibaba WAF&lt;/font&gt;" vertex="1">
+          <mxGeometry height="18" width="900" x="80" y="295" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-note" parent="1" style="text;html=1;align=right;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#B24E00;spacingRight=8;" value="&lt;font style=&quot;font-size:9px;font-style:italic;&quot;&gt;Regional managed services · auto-scaled by Alibaba · CEN Transit Router service-chained&lt;/font&gt;" vertex="1">
+          <mxGeometry height="18" width="960" x="1400" y="295" as="geometry" />
+        </mxCell>
+        <mxCell id="ddos-icon" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ddos_protection;" value="" vertex="1">
+          <mxGeometry height="48" width="42" x="350" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="ddos-lbl" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:11px;&quot;&gt;&lt;b&gt;Anti-DDoS Pro&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="16" width="160" x="290" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="ddos-sub" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:9px;font-style:italic;&quot;&gt;L3-L7 scrubbing · BGP route&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="200" x="270" y="428" as="geometry" />
+        </mxCell>
+        <mxCell id="cfw-icon" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.cfw_cloud_firewall;" value="" vertex="1">
+          <mxGeometry height="40" width="56" x="900" y="358" as="geometry" />
+        </mxCell>
+        <mxCell id="cfw-lbl" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:11px;&quot;&gt;&lt;b&gt;Cloud Firewall (CFW)&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="16" width="200" x="830" y="408" as="geometry" />
+        </mxCell>
+        <mxCell id="cfw-sub" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:9px;font-style:italic;&quot;&gt;N-S · inter-VPC E-W · default-deny&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="260" x="800" y="426" as="geometry" />
+        </mxCell>
+        <mxCell id="waf-icon" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.waf_web_application_firewall;" value="" vertex="1">
+          <mxGeometry height="44" width="50" x="1430" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="waf-lbl" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:11px;&quot;&gt;&lt;b&gt;Alibaba WAF&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="16" width="170" x="1370" y="408" as="geometry" />
+        </mxCell>
+        <mxCell id="waf-sub" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:9px;font-style:italic;&quot;&gt;OWASP Top-10 · HTTP/HTTPS&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="230" x="1340" y="426" as="geometry" />
+        </mxCell>
+        <mxCell id="hub-rect" parent="1" style="dashed=0;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFBF5;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="620" width="2330" x="60" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="hub-icon" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vpc_virtual_private_cloud;" value="" vertex="1">
+          <mxGeometry height="20" width="31.15" x="70" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="hub-name" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:11px;&quot;&gt;&lt;b&gt;Hub-VPC&lt;/b&gt; · Transit + Perimeter (converged) · 10.137.0.0/19&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="700" x="106" y="499" as="geometry" />
+        </mxCell>
+        <mxCell id="hub-note" parent="1" style="text;html=1;align=right;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;spacingRight=10;" value="&lt;font style=&quot;font-size:9px;font-style:italic;&quot;&gt;Two route-tables: (1) transit-lane (BGP) · (2) secured-lane (default → perimeter chain)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="1480" x="900" y="499" as="geometry" />
+        </mxCell>
+        <mxCell id="az-a" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#FFD3AA;dashed=1;verticalAlign=top;align=left;spacingLeft=8;fontColor=#B24E00;" value="&lt;font style=&quot;font-size:10px;font-style:italic;&quot;&gt;me-central-1a&lt;/font&gt;" vertex="1">
+          <mxGeometry height="285" width="2300" x="75" y="525" as="geometry" />
+        </mxCell>
+        <mxCell id="az-b" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#FFD3AA;dashed=1;verticalAlign=top;align=left;spacingLeft=8;fontColor=#B24E00;" value="&lt;font style=&quot;font-size:10px;font-style:italic;&quot;&gt;me-central-1b&lt;/font&gt;" vertex="1">
+          <mxGeometry height="280" width="2300" x="75" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-mgmt-a" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFFFF;" value="" vertex="1">
+          <mxGeometry height="235" width="240" x="90" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-mgmt-a-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="95" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-mgmt-a-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;mgmt-vsw-a&lt;/b&gt;&lt;br&gt;10.137.1.0/24&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="210" x="115" y="557" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt-a-e1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="110" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt-a-e1l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;Bastion-a&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="48" x="98" y="622" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt-a-e2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="167" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt-a-e2l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;Ops-Jmp&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="48" x="155" y="622" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt-a-e3" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="224" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt-a-e3l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;ITSM&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="48" x="212" y="622" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt-a-e4" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="281" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt-a-e4l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;Mon-a&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="48" x="269" y="622" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt-a-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Bastion · ITSM · Ops jump-host · Monitor agents&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="230" x="95" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-perim-a" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFAF0;" value="" vertex="1">
+          <mxGeometry height="235" width="320" x="340" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-perim-a-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="345" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-perim-a-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;perimeter-vsw-a · waf-vsw-a&lt;/b&gt;&lt;br&gt;10.137.3.0/24 + 10.137.9.0/24&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="290" x="365" y="557" as="geometry" />
+        </mxCell>
+        <mxCell id="cfw-ep-a" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.cfw_cloud_firewall;" value="" vertex="1">
+          <mxGeometry height="28" width="40" x="395" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="cfw-ep-a-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;CFW endpoint&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="80" x="375" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="waf-ep-a" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.waf_web_application_firewall;" value="" vertex="1">
+          <mxGeometry height="32" width="36" x="555" y="598" as="geometry" />
+        </mxCell>
+        <mxCell id="waf-ep-a-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;WAF integration&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="90" x="530" y="632" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-perim-a-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Service-chain endpoints for managed CFW + WAF&lt;br&gt;Steered via CEN-Transit Router PBR&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="310" x="345" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-f5-a" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFFFF;" value="" vertex="1">
+          <mxGeometry height="235" width="240" x="670" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-f5-a-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="675" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-f5-a-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;f5-vsw-a&lt;/b&gt;&lt;br&gt;10.137.7.0/24&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="210" x="695" y="557" as="geometry" />
+        </mxCell>
+        <mxCell id="f5-a-e1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="765" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="f5-a-e1l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;F5 BIG-IP&lt;br&gt;(Active)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="22" width="80" x="755" y="622" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-f5-a-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;F5 BIG-IP VE (Active)&lt;br&gt;LTM · APM (SSL-VPN) · DNS&lt;br&gt;1:1 vServer mapping from on-prem&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="230" x="675" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-ddei" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFFFF;" value="" vertex="1">
+          <mxGeometry height="235" width="200" x="920" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-ddei-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="925" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-ddei-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;ddei-vsw&lt;/b&gt;&lt;br&gt;10.137.11.0/24&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="170" x="945" y="557" as="geometry" />
+        </mxCell>
+        <mxCell id="ddei-e1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1000" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="ddei-e1l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;Trend Micro&lt;br&gt;DDEI&lt;/font&gt;" vertex="1">
+          <mxGeometry height="22" width="62" x="980" y="624" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-ddei-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;SMTP inspection&lt;br&gt;25 · 465 · 587&lt;br&gt;Email-borne malware&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="190" x="925" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-duo" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFFFF;" value="" vertex="1">
+          <mxGeometry height="235" width="200" x="1130" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-duo-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1135" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-duo-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;duo-mfa-vsw&lt;/b&gt;&lt;br&gt;10.137.12.0/26&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="170" x="1155" y="557" as="geometry" />
+        </mxCell>
+        <mxCell id="duo-e1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1210" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="duo-e1l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;Cisco Duo&lt;br&gt;Connector&lt;/font&gt;" vertex="1">
+          <mxGeometry height="22" width="62" x="1190" y="624" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-duo-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;MFA broker for admin&lt;br&gt;sessions &amp;amp; F5 APM SSL-VPN&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="190" x="1135" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-slb-a" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFAF0;" value="" vertex="1">
+          <mxGeometry height="235" width="240" x="1335" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-slb-a-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1340" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-slb-a-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;hub-slb-vsw-a&lt;/b&gt;&lt;br&gt;Inbound landing · EIP attached&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="210" x="1360" y="557" as="geometry" />
+        </mxCell>
+        <mxCell id="slb-a-icon" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.alb_application_load_balancer_01;" value="" vertex="1">
+          <mxGeometry height="22" width="24" x="1443" y="595" as="geometry" />
+        </mxCell>
+        <mxCell id="slb-a-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;ALB / SLB&lt;/b&gt; (Active)&lt;br&gt;&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;EIP 203.0.113.32/27&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="32" width="220" x="1345" y="622" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-slb-a-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Inbound traffic from WAF&lt;br&gt;lands here · forwards to F5 LTM&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="230" x="1340" y="665" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-natgw" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFFFF;" value="" vertex="1">
+          <mxGeometry height="235" width="200" x="1585" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-natgw-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1590" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-natgw-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;natgw-vsw&lt;/b&gt;&lt;br&gt;10.137.0.128/28&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="170" x="1610" y="557" as="geometry" />
+        </mxCell>
+        <mxCell id="natgw-icon" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.nat_gateway;" value="" vertex="1">
+          <mxGeometry height="26" width="34" x="1668" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="natgw-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;NAT Gateway&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Egress only · EIP pool&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="190" x="1590" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-natgw-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Outbound flow forwarded&lt;br&gt;through CFW for inspection&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="190" x="1590" y="665" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-vbr-a" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFAF0;" value="" vertex="1">
+          <mxGeometry height="235" width="565" x="1795" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-vbr-a-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1800" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-vbr-a-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;transit-vsw-a&lt;/b&gt; · 10.137.0.0/26 — BGP transit lane (peers with on-prem)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="540" x="1820" y="557" as="geometry" />
+        </mxCell>
+        <mxCell id="vbr-icon" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.express_connect;" value="" vertex="1">
+          <mxGeometry height="46" width="52" x="1860" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="vbr-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;VBR&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Virtual Border Router&lt;br&gt;BGP peer · primary path&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="1810" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="ec-line-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#FF6A00;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;Express Connect (Primary)&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="370" x="1990" y="616" as="geometry" />
+        </mxCell>
+        <mxCell id="ec-line-l2" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#FF6A00;" value="&lt;font style=&quot;font-size:9px;font-style:italic;&quot;&gt;Physical circuit · BGP-driven failover to IPsec&lt;/font&gt;" vertex="1">
+          <mxGeometry height="16" width="370" x="1990" y="636" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-vbr-a-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Cloud-side advertised prefixes: 10.137.0.0/16 (all spokes) + 10.20.22.0/24 (Example-Corp-Website) · ASN 64512 (private)&lt;br&gt;Receives from on-prem: HQ + branch summarized supernets via PA-5220&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="555" x="1800" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-mgmt-b" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFFFF;" value="" vertex="1">
+          <mxGeometry height="245" width="240" x="90" y="845" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-mgmt-b-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="95" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-mgmt-b-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;mgmt-vsw-b&lt;/b&gt;&lt;br&gt;10.137.2.0/24&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="210" x="115" y="847" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt-b-e1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="110" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt-b-e1l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;Bastion-b&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="48" x="98" y="912" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt-b-e2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="167" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt-b-e2l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;Log-svc&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="48" x="155" y="912" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt-b-e3" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="224" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt-b-e3l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;ITSM-b&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="48" x="212" y="912" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt-b-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Bastion · Log Service · ITSM (AZ-b mirror)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="130" width="230" x="95" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-perim-b" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFAF0;" value="" vertex="1">
+          <mxGeometry height="245" width="320" x="340" y="845" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-perim-b-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="345" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-perim-b-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;perimeter-vsw-b · waf-vsw-b&lt;/b&gt;&lt;br&gt;10.137.4.0/24 + 10.137.10.0/24&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="290" x="365" y="847" as="geometry" />
+        </mxCell>
+        <mxCell id="cfw-ep-b" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.cfw_cloud_firewall;" value="" vertex="1">
+          <mxGeometry height="28" width="40" x="395" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="cfw-ep-b-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;CFW endpoint (HA)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="90" x="370" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="waf-ep-b" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.waf_web_application_firewall;" value="" vertex="1">
+          <mxGeometry height="32" width="36" x="555" y="888" as="geometry" />
+        </mxCell>
+        <mxCell id="waf-ep-b-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;WAF integration (HA)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="100" x="525" y="922" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-perim-b-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Regional managed services — multi-AZ HA&lt;br&gt;Single CFW instance covers both zones&lt;/font&gt;" vertex="1">
+          <mxGeometry height="130" width="310" x="345" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-f5-b" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFFFF;" value="" vertex="1">
+          <mxGeometry height="245" width="240" x="670" y="845" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-f5-b-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="675" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-f5-b-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;f5-vsw-b&lt;/b&gt;&lt;br&gt;10.137.8.0/24&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="210" x="695" y="847" as="geometry" />
+        </mxCell>
+        <mxCell id="f5-b-e1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="765" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="f5-b-e1l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;F5 BIG-IP&lt;br&gt;(Standby)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="22" width="80" x="755" y="912" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-f5-b-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;F5 BIG-IP VE (Standby)&lt;br&gt;A/S pair — floating VIP failover&lt;br&gt;Config sync with f5-vsw-a&lt;/font&gt;" vertex="1">
+          <mxGeometry height="130" width="230" x="675" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-ddei-b" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFFFF;" value="" vertex="1">
+          <mxGeometry height="245" width="200" x="920" y="845" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-ddei-b-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="925" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-ddei-b-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;ddei-vsw HA&lt;/b&gt;&lt;br&gt;Cross-zone instance&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="170" x="945" y="847" as="geometry" />
+        </mxCell>
+        <mxCell id="ddei-b-e1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1000" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="ddei-b-e1l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;DDEI&lt;br&gt;(HA peer)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="22" width="55" x="985" y="914" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-ddei-b-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Trend Micro DDEI HA pair&lt;br&gt;SMTP-AV / phishing&lt;/font&gt;" vertex="1">
+          <mxGeometry height="130" width="190" x="925" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-duo-b" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFFFF;" value="" vertex="1">
+          <mxGeometry height="245" width="200" x="1130" y="845" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-duo-b-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1135" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-duo-b-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;duo-mfa-vsw HA&lt;/b&gt;&lt;br&gt;Cross-zone peer&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="170" x="1155" y="847" as="geometry" />
+        </mxCell>
+        <mxCell id="duo-b-e1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1210" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="duo-b-e1l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;Duo&lt;br&gt;(HA peer)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="22" width="55" x="1195" y="914" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-duo-b-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Duo connector HA peer&lt;br&gt;Active-Active proxy&lt;/font&gt;" vertex="1">
+          <mxGeometry height="130" width="190" x="1135" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-slb-b" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFAF0;" value="" vertex="1">
+          <mxGeometry height="245" width="240" x="1335" y="845" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-slb-b-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1340" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-slb-b-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;hub-slb-vsw-b&lt;/b&gt;&lt;br&gt;Standby · cross-zone failover&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="210" x="1360" y="847" as="geometry" />
+        </mxCell>
+        <mxCell id="slb-b-icon" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.alb_application_load_balancer_01;" value="" vertex="1">
+          <mxGeometry height="22" width="24" x="1443" y="888" as="geometry" />
+        </mxCell>
+        <mxCell id="slb-b-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;ALB / SLB&lt;/b&gt; (Standby)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="220" x="1345" y="912" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-slb-b-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Auto-promoted on AZ failure&lt;br&gt;Same EIP via floating attachment&lt;/font&gt;" vertex="1">
+          <mxGeometry height="130" width="230" x="1340" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-natgw-b" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFFFF;" value="" vertex="1">
+          <mxGeometry height="245" width="200" x="1585" y="845" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-natgw-b-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1590" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-natgw-b-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;natgw HA&lt;/b&gt;&lt;br&gt;Multi-zone managed&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="170" x="1610" y="847" as="geometry" />
+        </mxCell>
+        <mxCell id="natgw-b-icon" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.nat_gateway;" value="" vertex="1">
+          <mxGeometry height="26" width="34" x="1668" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="natgw-b-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;NAT GW (HA peer)&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="190" x="1590" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-natgw-b-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Managed NAT — Alibaba handles AZ failover automatically&lt;/font&gt;" vertex="1">
+          <mxGeometry height="130" width="190" x="1590" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-vpngw" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFAF0;" value="" vertex="1">
+          <mxGeometry height="245" width="565" x="1795" y="845" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-vpngw-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1800" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-vpngw-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;&lt;b&gt;vpngw-vsw · transit-vsw-b&lt;/b&gt; · 10.137.0.144/28 + 10.137.0.64/26 — IPsec transit lane&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="540" x="1820" y="847" as="geometry" />
+        </mxCell>
+        <mxCell id="vpngw-icon" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vpn_gateway;" value="" vertex="1">
+          <mxGeometry height="42" width="42" x="1866" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="vpngw-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;VPN Gateway&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;IPsec IKEv2 · AES-256 · DH-14&lt;br&gt;BGP-driven failover with VBR&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="48" width="150" x="1810" y="936" as="geometry" />
+        </mxCell>
+        <mxCell id="vpn-line-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#FF6A00;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;IPsec VPN (Backup · interim primary)&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="18" width="370" x="1967" y="918" as="geometry" />
+        </mxCell>
+        <mxCell id="vpn-line-l2" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#FF6A00;" value="&lt;font style=&quot;font-size:9px;font-style:italic;&quot;&gt;Cloud EIP from public block · tunnel to PA-5220 untrust&lt;/font&gt;" vertex="1">
+          <mxGeometry height="16" width="370" x="1990" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="vs-vpngw-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Pre-Shared Key stored in KMS · 3600s lifetime · ESP for Phase 2&lt;br&gt;Local subnets: 10.137.0.0/16 + 10.20.22.0/24 · Remote: HQ + branch supernets&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="555" x="1800" y="998" as="geometry" />
+        </mxCell>
+        <mxCell id="cen-rect" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6A00;strokeColor=#FF6A00;" value="" vertex="1">
+          <mxGeometry height="65" width="2330" x="60" y="1155" as="geometry" />
+        </mxCell>
+        <mxCell id="cen-icon" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FFFFFF;strokeColor=none;shape=mxgraph.alibaba_cloud.cen_cloud_enterprise_network;" value="" vertex="1">
+          <mxGeometry height="51" width="51" x="1204.5" y="1162" as="geometry" />
+        </mxCell>
+        <mxCell id="cen-lbl" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontSize=17;" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;&lt;b&gt;Cloud Enterprise Network · example-cen-01&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="25" width="400" x="600" y="1164" as="geometry" />
+        </mxCell>
+        <mxCell id="cen-lbl2" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontSize=13;" value="&lt;font style=&quot;font-style: italic; color: rgb(255, 229, 204);&quot;&gt;Hub-and-spoke route policy · spoke→spoke blackholed · service-chained via Hub-VPC perimeter&lt;/font&gt;" vertex="1">
+          <mxGeometry height="27" width="600" x="490" y="1188" as="geometry" />
+        </mxCell>
+        <mxCell id="ew-fw-l" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;spacingLeft=10;" value="&lt;font style=&quot;font-size:10px;color:#FFFFFF;&quot;&gt;&lt;b&gt;East-West Firewall (CFW)&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="220" x="80" y="1170" as="geometry" />
+        </mxCell>
+        <mxCell id="ew-fw-icon" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FFFFFF;strokeColor=none;shape=mxgraph.alibaba_cloud.cfw_cloud_firewall;" value="" vertex="1">
+          <mxGeometry height="35" width="47.73" x="290" y="1165" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-ss" parent="1" style="dashed=0;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFBF5;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="400" width="450" x="60" y="1270" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-ss-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vpc_virtual_private_cloud;" value="" vertex="1">
+          <mxGeometry height="20" width="31.15" x="68" y="1278" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-ss-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;Shared-Services VPC&lt;/b&gt; · 10.137.32.0/20&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="400" x="105" y="1278" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-ss-foot" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:9px;font-style:italic;&quot;&gt;Identity · mail · shared management&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="400" x="105" y="1292" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-vsw1" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="105" width="200" x="75" y="1315" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-vsw1-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="80" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-vsw1-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;exchange-vsw-a/b&lt;/b&gt;&lt;br&gt;10.137.32-33.0/24&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="170" x="100" y="1317" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-ex-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="105" y="1350" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-ex-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="160" y="1350" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-ex-3" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="215" y="1350" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-ex-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;Exchange DAG-1 / 2 · Witness&lt;br&gt;&lt;font style=&quot;font-style:italic;&quot;&gt;migrated from Legacy-Tenant&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="195" x="80" y="1375" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-vsw2" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="105" width="210" x="290" y="1315" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-vsw2-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="295" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-vsw2-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;ad-vsw-a/b&lt;/b&gt;&lt;br&gt;10.137.35-36.0/24&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="180" x="315" y="1317" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-ad-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="330" y="1350" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-ad-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="430" y="1350" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-ad-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;AD-DC-CLOUD-01&amp;nbsp;&amp;nbsp;&amp;nbsp;AD-DC-CLOUD-02&lt;br&gt;&lt;font style=&quot;font-style:italic;&quot;&gt;example.local AD-integrated DNS&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="205" x="295" y="1375" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-vsw3" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="105" width="425" x="75" y="1430" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-vsw3-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="80" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-vsw3-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;dns-vsw-a/b · mgmt-bastion-vsw-a/b · monitoring-vsw · log-vsw&lt;/b&gt;&lt;br&gt;10.137.37.0/26–10.137.41.0/24&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="395" x="100" y="1432" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-dns-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="18" width="20" x="95" y="1465" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-dns-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="18" width="20" x="155" y="1465" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-dns-3" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="18" width="20" x="215" y="1465" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-dns-4" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="18" width="20" x="275" y="1465" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-dns-5" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="18" width="20" x="335" y="1465" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-dns-6" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="18" width="20" x="395" y="1465" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-dns-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;PrivateZone resolvers · Bastion · Jump hosts · CloudMonitor · Log Service · ActionTrail&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="415" x="80" y="1488" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-vsw4" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="110" width="425" x="75" y="1545" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-vsw4-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="80" y="1550" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-vsw4-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;duo-vsw · mdm-vsw · dlp-vsw · ddei-vsw · nextcloud-vsw&lt;/b&gt;&lt;br&gt;10.137.42–46.0/24&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="395" x="100" y="1547" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-misc-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="18" width="20" x="125" y="1580" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-misc-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="18" width="20" x="195" y="1580" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-misc-3" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="18" width="20" x="265" y="1580" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-misc-4" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="18" width="20" x="335" y="1580" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-misc-5" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="18" width="20" x="405" y="1580" as="geometry" />
+        </mxCell>
+        <mxCell id="ss-misc-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Cisco Duo proxy · ManageEngine MDM · DLP · DDEI Security Gateway · NextCloud&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="415" x="80" y="1605" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-prod" parent="1" style="dashed=0;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFBF5;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="400" width="465" x="525" y="1270" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-prod-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vpc_virtual_private_cloud;" value="" vertex="1">
+          <mxGeometry height="20" width="31.15" x="533" y="1278" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-prod-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;Production VPC&lt;/b&gt; · 10.137.48.0/20&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="415" x="570" y="1278" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-prod-foot" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:9px;font-style:italic;&quot;&gt;Apps · SAP · DB · Files — mirrors on-prem server-farm tier model&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="415" x="570" y="1292" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-app" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="80" width="435" x="540" y="1315" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-app-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="545" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-app-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;app-prod-vsw-a/b&lt;/b&gt; · 10.137.48-49.0/24 — Application tier&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="410" x="565" y="1317" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-app-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="555" y="1345" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-app-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="625" y="1345" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-app-3" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="695" y="1345" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-app-4" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="765" y="1345" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-app-5" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="835" y="1345" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-app-6" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="905" y="1345" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-app-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Business-App-1 · Business-App-2 · Business-App-3 · Business-App-4 · Business-App-5&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="425" x="545" y="1368" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-sap" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="80" width="435" x="540" y="1405" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-sap-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="545" y="1410" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-sap-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;sap-prod-vsw-a/b&lt;/b&gt; · 10.137.50-51.0/24 — SAP HANA · Oracle Apps&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="410" x="565" y="1407" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-sap-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="600" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-sap-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="700" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-sap-3" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="800" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-sap-4" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="900" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-sap-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;SAP / Oracle application tier · cross-zone HA&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="425" x="545" y="1458" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-db" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="80" width="270" x="540" y="1495" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-db-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="545" y="1500" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-db-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;db-prod-vsw-a/b&lt;/b&gt;&lt;br&gt;10.137.52-53.0/24&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="240" x="565" y="1497" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-db-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.apsaradb_rds;" value="" vertex="1">
+          <mxGeometry height="22" width="24" x="565" y="1530" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-db-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.apsaradb_rds;" value="" vertex="1">
+          <mxGeometry height="22" width="24" x="625" y="1530" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-db-3" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="690" y="1532" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-db-4" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="755" y="1532" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-db-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;RDS SQL · MySQL · retained SQL/Oracle&lt;/font&gt;" vertex="1">
+          <mxGeometry height="16" width="265" x="545" y="1558" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-files" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="80" width="160" x="820" y="1495" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-files-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="825" y="1500" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-files-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;files-vsw-a/b&lt;/b&gt;&lt;br&gt;10.137.54-55.0/24&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="135" x="845" y="1497" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-files-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="850" y="1532" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-files-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="915" y="1532" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-files-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;SharePoint · FS&lt;/font&gt;" vertex="1">
+          <mxGeometry height="16" width="160" x="820" y="1558" as="geometry" />
+        </mxCell>
+        <mxCell id="pr-foot" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Reserved 10.137.56–63.0/24 (future tiers) · SGs deny-by-default intra-VPC&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="440" x="540" y="1600" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-np" parent="1" style="dashed=0;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFBF5;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="400" width="370" x="1005" y="1270" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-np-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vpc_virtual_private_cloud;" value="" vertex="1">
+          <mxGeometry height="20" width="31.15" x="1013" y="1278" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-np-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;Non-Production VPC&lt;/b&gt; · 10.137.64.0/20&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="320" x="1050" y="1278" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-np-foot" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:9px;font-style:italic;&quot;&gt;Dev · Test · Stage · Sandbox — same tier shape as Prod, smaller scale&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="320" x="1050" y="1292" as="geometry" />
+        </mxCell>
+        <mxCell id="np-dev" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="78" width="345" x="1020" y="1315" as="geometry" />
+        </mxCell>
+        <mxCell id="np-dev-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1025" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="np-dev-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;dev-vsw-a/b&lt;/b&gt; · 10.137.64-65.0/24 — Development&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="315" x="1045" y="1317" as="geometry" />
+        </mxCell>
+        <mxCell id="np-dev-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1050" y="1345" as="geometry" />
+        </mxCell>
+        <mxCell id="np-dev-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1110" y="1345" as="geometry" />
+        </mxCell>
+        <mxCell id="np-dev-3" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1170" y="1345" as="geometry" />
+        </mxCell>
+        <mxCell id="np-dev-4" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1230" y="1345" as="geometry" />
+        </mxCell>
+        <mxCell id="np-dev-5" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1290" y="1345" as="geometry" />
+        </mxCell>
+        <mxCell id="np-dev-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Dev application workloads&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="335" x="1025" y="1368" as="geometry" />
+        </mxCell>
+        <mxCell id="np-test" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="78" width="345" x="1020" y="1405" as="geometry" />
+        </mxCell>
+        <mxCell id="np-test-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1025" y="1410" as="geometry" />
+        </mxCell>
+        <mxCell id="np-test-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;test-vsw-a/b&lt;/b&gt; · 10.137.66-67.0/24 — Test / QA&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="315" x="1045" y="1407" as="geometry" />
+        </mxCell>
+        <mxCell id="np-test-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1050" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="np-test-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1130" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="np-test-3" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1210" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="np-test-4" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1290" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="np-test-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Test / QA workloads&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="335" x="1025" y="1458" as="geometry" />
+        </mxCell>
+        <mxCell id="np-stage" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="78" width="345" x="1020" y="1495" as="geometry" />
+        </mxCell>
+        <mxCell id="np-stage-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1025" y="1500" as="geometry" />
+        </mxCell>
+        <mxCell id="np-stage-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;stage-vsw-a/b&lt;/b&gt; · 10.137.68-69.0/24 — Staging / Pre-prod&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="315" x="1045" y="1497" as="geometry" />
+        </mxCell>
+        <mxCell id="np-stage-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1075" y="1525" as="geometry" />
+        </mxCell>
+        <mxCell id="np-stage-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1175" y="1525" as="geometry" />
+        </mxCell>
+        <mxCell id="np-stage-3" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1275" y="1525" as="geometry" />
+        </mxCell>
+        <mxCell id="np-stage-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Staging · Pre-prod replicas&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="335" x="1025" y="1548" as="geometry" />
+        </mxCell>
+        <mxCell id="np-sbx" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="68" width="345" x="1020" y="1585" as="geometry" />
+        </mxCell>
+        <mxCell id="np-sbx-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1025" y="1590" as="geometry" />
+        </mxCell>
+        <mxCell id="np-sbx-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;sandbox-vsw&lt;/b&gt; · 10.137.70.0/24 — Operator sandbox / training&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="315" x="1045" y="1587" as="geometry" />
+        </mxCell>
+        <mxCell id="np-sbx-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1180" y="1615" as="geometry" />
+        </mxCell>
+        <mxCell id="np-sbx-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;No direct Internet · No Production path · Reserved 10.137.71–79.0/24&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="335" x="1025" y="1635" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-bk" parent="1" style="dashed=0;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFBF5;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="400" width="450" x="1390" y="1270" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-bk-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vpc_virtual_private_cloud;" value="" vertex="1">
+          <mxGeometry height="20" width="31.15" x="1398" y="1278" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-bk-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;Backup VPC&lt;/b&gt; · 10.137.80.0/20&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="400" x="1435" y="1278" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-bk-foot" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:9px;font-style:italic;&quot;&gt;Veeam B&amp;amp;R · HBR proxies · OSS Archive (private VPC-Endpoint)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="400" x="1435" y="1292" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-veeam" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="90" width="425" x="1405" y="1315" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-veeam-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1410" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-veeam-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;veeam-vsw-a/b&lt;/b&gt; · 10.137.80-81.0/24 — Veeam B&amp;amp;R (re-licensed under Example-Corp)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="395" x="1430" y="1317" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-veeam-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1430" y="1345" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-veeam-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1490" y="1345" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-veeam-3" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1550" y="1345" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-veeam-4" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1610" y="1345" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-veeam-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Veeam B&amp;amp;R servers + repository proxies · re-license before licensing expiry&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="420" x="1410" y="1370" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-hbr" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="90" width="425" x="1405" y="1415" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-hbr-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1410" y="1420" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-hbr-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;hbr-vsw-a/b&lt;/b&gt; · 10.137.82-83.0/24 — HBR snapshot proxies&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="395" x="1430" y="1417" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-hbr-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1470" y="1445" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-hbr-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1540" y="1445" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-hbr-3" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1610" y="1445" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-hbr-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;HBR disk-snapshot replication for ECS workloads&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="420" x="1410" y="1470" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-oss" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFF1DF;" value="" vertex="1">
+          <mxGeometry height="135" width="425" x="1405" y="1515" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-oss-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1410" y="1520" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-oss-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;oss-endpoint-vsw&lt;/b&gt; · 10.137.84.0/26 — Private VPC-Endpoint to OSS&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="400" x="1430" y="1517" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-oss-icon" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.oss_object_storage_service;" value="" vertex="1">
+          <mxGeometry height="42" width="55" x="1590" y="1545" as="geometry" />
+        </mxCell>
+        <mxCell id="bk-oss-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;OSS Archive&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;KMS-CMK encryption at rest&lt;br&gt;Cross-AZ replication&lt;br&gt;ActionTrail · VPC Flow Logs archive&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="56" width="425" x="1410" y="1588" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-web" parent="1" style="dashed=0;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFFBF5;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="400" width="510" x="1855" y="1270" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-web-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vpc_virtual_private_cloud;" value="" vertex="1">
+          <mxGeometry height="20" width="31.15" x="1863" y="1278" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-web-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;Example-Corp-Website VPC&lt;/b&gt; · 10.20.22.0/24 (retained as-is)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="460" x="1900" y="1278" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-web-foot" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:9px;font-style:italic;&quot;&gt;Live website · Public block 203.0.113.48–54 · outside 10.137/16 envelope&lt;/font&gt;" vertex="1">
+          <mxGeometry height="12" width="460" x="1900" y="1292" as="geometry" />
+        </mxCell>
+        <mxCell id="web-fe" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="160" width="240" x="1870" y="1315" as="geometry" />
+        </mxCell>
+        <mxCell id="web-fe-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1875" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="web-fe-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;web-fe-vsw&lt;/b&gt; · 10.20.22.0/26&lt;br&gt;Front-End&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="210" x="1895" y="1317" as="geometry" />
+        </mxCell>
+        <mxCell id="web-fe-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1890" y="1360" as="geometry" />
+        </mxCell>
+        <mxCell id="web-fe-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1950" y="1360" as="geometry" />
+        </mxCell>
+        <mxCell id="web-fe-3" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="2010" y="1360" as="geometry" />
+        </mxCell>
+        <mxCell id="web-fe-4" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="2070" y="1360" as="geometry" />
+        </mxCell>
+        <mxCell id="web-fe-1l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Front-End web servers&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="230" x="1875" y="1385" as="geometry" />
+        </mxCell>
+        <mxCell id="web-be-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1875" y="1410" as="geometry" />
+        </mxCell>
+        <mxCell id="web-be-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;web-be-vsw&lt;/b&gt; · 10.20.22.64/26 · Back-End&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="210" x="1895" y="1407" as="geometry" />
+        </mxCell>
+        <mxCell id="web-be-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1910" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="web-be-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="1970" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="web-be-3" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="2030" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="web-be-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Back-End application&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="230" x="1875" y="1460" as="geometry" />
+        </mxCell>
+        <mxCell id="web-db" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="160" width="240" x="2120" y="1315" as="geometry" />
+        </mxCell>
+        <mxCell id="web-db-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="2125" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="web-db-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;web-db-vsw&lt;/b&gt; · 10.20.22.128/26&lt;br&gt;Database tier&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="210" x="2145" y="1317" as="geometry" />
+        </mxCell>
+        <mxCell id="web-db-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.apsaradb_rds;" value="" vertex="1">
+          <mxGeometry height="22" width="26" x="2160" y="1360" as="geometry" />
+        </mxCell>
+        <mxCell id="web-db-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="2220" y="1360" as="geometry" />
+        </mxCell>
+        <mxCell id="web-db-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;RDS · Oracle/SQL Server retained&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="230" x="2125" y="1385" as="geometry" />
+        </mxCell>
+        <mxCell id="web-fs-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="2125" y="1410" as="geometry" />
+        </mxCell>
+        <mxCell id="web-fs-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;web-fs-vsw&lt;/b&gt; · 10.20.22.192/26 · File-Server&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="210" x="2145" y="1407" as="geometry" />
+        </mxCell>
+        <mxCell id="web-fs-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="2180" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="web-fs-2" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.ecs_elastic_compute_service;" value="" vertex="1">
+          <mxGeometry height="20" width="22" x="2240" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="web-fs-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;NAS-backed file-server tier&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="230" x="2125" y="1460" as="geometry" />
+        </mxCell>
+        <mxCell id="web-pub" parent="1" style="dashed=1;verticalAlign=top;whiteSpace=wrap;html=1;strokeColor=#FF8000;fillColor=#FFF1DF;" value="" vertex="1">
+          <mxGeometry height="80" width="490" x="1870" y="1490" as="geometry" />
+        </mxCell>
+        <mxCell id="web-pub-i" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.vswitch;" value="" vertex="1">
+          <mxGeometry height="10" width="14" x="1875" y="1495" as="geometry" />
+        </mxCell>
+        <mxCell id="web-pub-n" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:8px;&quot;&gt;&lt;b&gt;web-public-vsw&lt;/b&gt; · 203.0.113.48–54 retained EIP&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="460" x="1895" y="1492" as="geometry" />
+        </mxCell>
+        <mxCell id="web-pub-alb" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.alb_application_load_balancer_01;" value="" vertex="1">
+          <mxGeometry height="22" width="28" x="2095" y="1522" as="geometry" />
+        </mxCell>
+        <mxCell id="web-pub-l" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;Public ALB for website ingress · published via existing F5 GTM on-prem&lt;/font&gt;" vertex="1">
+          <mxGeometry height="14" width="490" x="1870" y="1548" as="geometry" />
+        </mxCell>
+        <mxCell id="web-note" parent="1" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#5A6573;" value="&lt;font style=&quot;font-size:8px;font-style:italic;&quot;&gt;CEN-attached as a spoke · DR-ready posture · retained as-is (no replatform)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="490" x="1870" y="1580" as="geometry" />
+        </mxCell>
+        <mxCell id="f-internet-ddos" edge="1" parent="1" source="net-internet" style="endArrow=classic;html=1;rounded=0;endFill=1;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="ddos-icon">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="200" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-internet-ddos-l" connectable="0" parent="f-internet-ddos" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fillColor=#FFFFFF;strokeColor=none;" value="&lt;font style=&quot;font-size:9px;color:#FFFFFF;background-color:#000000;&quot;&gt;&amp;nbsp;Inbound&amp;nbsp;&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.3" as="geometry" />
+        </mxCell>
+        <mxCell id="f-users-ddos" edge="1" parent="1" source="net-users" style="endArrow=classic;html=1;rounded=0;endFill=1;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="ddos-icon">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="336" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-ddos-cfw" edge="1" parent="1" source="ddos-icon" style="endArrow=classic;html=1;rounded=0;endFill=1;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="cfw-icon">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f-cfw-waf" edge="1" parent="1" source="cfw-icon" style="endArrow=classic;html=1;rounded=0;endFill=1;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="waf-icon">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f-waf-slb" edge="1" parent="1" source="waf-icon" style="endArrow=classic;html=1;rounded=0;endFill=1;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="vs-slb-a">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f-waf-slb-l" connectable="0" parent="f-waf-slb" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fillColor=#FFFFFF;strokeColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;to ALB&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.2" as="geometry" />
+        </mxCell>
+        <mxCell id="f-slb-f5" edge="1" parent="1" source="vs-slb-a" style="endArrow=classic;html=1;rounded=0;endFill=1;strokeWidth=2;exitX=0;exitY=0.4;exitDx=0;exitDy=0;entryX=1;entryY=0.4;entryDx=0;entryDy=0;" target="vs-f5-a">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1330" y="755" />
+              <mxPoint x="915" y="755" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-slb-f5-l" connectable="0" parent="f-slb-f5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fillColor=#FFFFFF;strokeColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;LTM forwarding&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f-nat-cfw" edge="1" parent="1" source="vs-natgw" style="endArrow=classic;html=1;rounded=0;endFill=1;dashed=1;strokeColor=#80FF00;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="cfw-icon">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1685" y="478" />
+              <mxPoint x="928" y="478" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-nat-cfw-l" connectable="0" parent="f-nat-cfw" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fillColor=#FFFFFF;strokeColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;Outbound&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f-cfw-internet" edge="1" parent="1" source="cfw-icon" style="endArrow=classic;html=1;rounded=0;endFill=1;dashed=1;strokeColor=#80FF00;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="net-internet">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="928" y="228" />
+              <mxPoint x="200" y="228" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-vbr-mpls" edge="1" parent="1" source="vbr-icon" style="endArrow=classic;startArrow=classic;startFill=1;html=1;rounded=0;endFill=1;strokeColor=#FF6A00;strokeWidth=3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="hq-mpls">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2425" y="623" />
+              <mxPoint x="2425" y="730" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-vbr-mpls-l" connectable="0" parent="f-vbr-mpls" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fillColor=#FFFFFF;strokeColor=none;" value="&lt;font style=&quot;font-size:10px;color:#FF6A00;&quot;&gt;&lt;b&gt;Express Connect (Primary)&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.5" y="-15" as="geometry" />
+        </mxCell>
+        <mxCell id="f-vpn-mpls" edge="1" parent="1" source="vpngw-icon" style="endArrow=classic;startArrow=classic;startFill=1;html=1;rounded=0;endFill=1;strokeColor=#FF6A00;dashed=1;dashPattern=6 6;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="hq-mpls">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2415" y="911" />
+              <mxPoint x="2415" y="740" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-vpn-mpls-l" connectable="0" parent="f-vpn-mpls" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fillColor=#FFFFFF;strokeColor=none;" value="&lt;font style=&quot;font-size:10px;color:#FF6A00;&quot;&gt;&lt;b&gt;IPsec VPN (Backup)&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.5" y="-15" as="geometry">
+            <mxPoint y="17" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-ivolve-cen" edge="1" parent="1" source="ivolve-rect" style="endArrow=classic;startArrow=classic;startFill=1;html=1;rounded=0;endFill=1;strokeColor=#A03030;dashed=1;dashPattern=6 6;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="cen-rect">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="25" y="145" />
+              <mxPoint x="25" y="1154" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-ivolve-cen-l" connectable="0" parent="f-ivolve-cen" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fillColor=#FFFFFF;strokeColor=none;" value="&lt;font style=&quot;font-size:9px;color:#A03030;&quot;&gt;&lt;b&gt;Temp CEN attach&lt;/b&gt;&lt;br&gt;(Exchange seed)&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.95" as="geometry" />
+        </mxCell>
+        <mxCell id="f-hub-cen" edge="1" parent="1" source="hub-rect" style="endArrow=none;html=1;rounded=0;strokeColor=#FF6A00;strokeWidth=4;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="cen-rect">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1225" y="1135" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-cen-ss" edge="1" parent="1" style="endArrow=classic;startArrow=classic;startFill=1;html=1;rounded=0;endFill=1;strokeColor=#FF0E0E;dashed=1;strokeWidth=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="vpc-ss">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="285" y="1220" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-cen-prod" edge="1" parent="1" style="endArrow=classic;startArrow=classic;startFill=1;html=1;rounded=0;endFill=1;strokeColor=#FF0E0E;dashed=1;strokeWidth=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="vpc-prod">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="758" y="1220" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-cen-np" edge="1" parent="1" source="cen-rect" style="endArrow=classic;startArrow=classic;startFill=1;html=1;rounded=0;endFill=1;strokeColor=#FF0E0E;dashed=1;strokeWidth=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.485;exitY=0.973;exitDx=0;exitDy=0;exitPerimeter=0;" target="vpc-np">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f-cen-bk" edge="1" parent="1" source="cen-rect" style="endArrow=classic;startArrow=classic;startFill=1;html=1;rounded=0;endFill=1;strokeColor=#FF0E0E;dashed=1;strokeWidth=2;exitX=0.667;exitY=0.943;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;" target="vpc-bk">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f-cen-web" edge="1" parent="1" source="cen-rect" style="endArrow=classic;startArrow=classic;startFill=1;html=1;rounded=0;endFill=1;strokeColor=#FF0E0E;dashed=1;strokeWidth=2;exitX=0.879;exitY=0.943;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;" target="vpc-web">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f-veeam-oss" edge="1" parent="1" source="bk-veeam-1" style="endArrow=classic;html=1;rounded=0;endFill=1;strokeColor=#0000CC;dashed=1;dashPattern=8 8;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1400" y="1365" />
+              <mxPoint x="1400" y="1580" />
+            </Array>
+            <mxPoint x="1580" y="1580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-veeam-oss-l" connectable="0" parent="f-veeam-oss" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fillColor=#FFFFFF;strokeColor=none;" value="&lt;font style=&quot;font-size:9px;color:#0000CC;&quot;&gt;OSS replication&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-rect" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C7CCD2;dashed=1;strokeWidth=1;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="75" width="2640" x="40" y="1880" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-title" parent="1" style="text;html=1;align=left;verticalAlign=top;strokeColor=none;fillColor=none;spacingLeft=10;spacingTop=5;" value="&lt;font style=&quot;font-size:11px;&quot;&gt;&lt;b&gt;Legend · Traffic Flows&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="200" x="40" y="1885" as="geometry" />
+        </mxCell>
+        <mxCell id="lg-in-ar" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;endFill=1;strokeWidth=2;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="55" y="1920" as="sourcePoint" />
+            <mxPoint x="100" y="1920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lg-in-l" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;Inbound (Internet)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="150" x="105" y="1910" as="geometry" />
+        </mxCell>
+        <mxCell id="lg-out-ar" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;endFill=1;dashed=1;strokeColor=#80FF00;strokeWidth=2;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="265" y="1920" as="sourcePoint" />
+            <mxPoint x="310" y="1920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lg-out-l" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;Outbound (Egress via NAT)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="200" x="315" y="1910" as="geometry" />
+        </mxCell>
+        <mxCell id="lg-int-ar" edge="1" parent="1" style="endArrow=classic;startArrow=classic;startFill=1;html=1;rounded=0;endFill=1;dashed=1;strokeColor=#FF0E0E;dashPattern=8 8;strokeWidth=2;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="525" y="1920" as="sourcePoint" />
+            <mxPoint x="570" y="1920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lg-int-l" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;Internal · E-W (inter-VPC via CEN)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="220" x="575" y="1910" as="geometry" />
+        </mxCell>
+        <mxCell id="lg-ali-ar" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;endFill=1;dashed=1;strokeColor=#0000CC;dashPattern=12 12;strokeWidth=2;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="800" y="1920" as="sourcePoint" />
+            <mxPoint x="845" y="1920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lg-ali-l" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;Alibaba service traffic (OSS)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="200" x="850" y="1910" as="geometry" />
+        </mxCell>
+        <mxCell id="lg-hyb-ar" edge="1" parent="1" style="endArrow=classic;startArrow=classic;startFill=1;html=1;rounded=0;endFill=1;strokeColor=#FF6A00;strokeWidth=3;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1055" y="1920" as="sourcePoint" />
+            <mxPoint x="1100" y="1920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lg-hyb-l" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;Hybrid · Express Connect (Primary)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="240" x="1105" y="1910" as="geometry" />
+        </mxCell>
+        <mxCell id="lg-vpn-ar" edge="1" parent="1" style="endArrow=classic;startArrow=classic;startFill=1;html=1;rounded=0;endFill=1;strokeColor=#FF6A00;dashed=1;dashPattern=6 6;strokeWidth=2;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1355" y="1920" as="sourcePoint" />
+            <mxPoint x="1400" y="1920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lg-vpn-l" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;Hybrid · IPsec VPN (Backup)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="220" x="1405" y="1910" as="geometry" />
+        </mxCell>
+        <mxCell id="lg-iv-ar" edge="1" parent="1" style="endArrow=classic;startArrow=classic;startFill=1;html=1;rounded=0;endFill=1;strokeColor=#A03030;dashed=1;dashPattern=6 6;strokeWidth=2;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1635" y="1920" as="sourcePoint" />
+            <mxPoint x="1680" y="1920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lg-iv-l" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" value="&lt;font style=&quot;font-size:9px;&quot;&gt;Legacy-Tenant cross-tenant (temporary)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="220" x="1685" y="1910" as="geometry" />
+        </mxCell>
+        <mxCell id="lg-rationale" parent="1" style="text;html=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#1B3A57;spacingLeft=10;" value="&lt;font style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;Option 1 Rationale:&lt;/b&gt; Lowest operational burden · Alibaba manages CFW + WAF lifecycle, patching, scaling · single-pane logging · Anti-DDoS Pro at edge · F5 + DDEI + Duo retained · hub-and-spoke via CEN-TR service chain&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="2640" x="40" y="1938" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
