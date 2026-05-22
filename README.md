@@ -4,9 +4,10 @@ A collection of public [Claude Code](https://claude.com/claude-code) skills that
 
 ## Available skills
 
-| Skill | Description |
-|-------|-------------|
-| [`drawio-alibaba-cloud`](drawio-alibaba-cloud/) | Create professional Alibaba Cloud architecture diagrams as native `.drawio` files using official `mxgraph.alibaba_cloud.*` icons, hub-and-spoke landing zone patterns, traffic-flow color coding, and clean orthogonal routing. Includes a reference example diagram. |
+| Skill | Description | Extra setup |
+|-------|-------------|-------------|
+| [`drawio-alibaba-cloud`](drawio-alibaba-cloud/) | Create professional Alibaba Cloud architecture diagrams as native `.drawio` files using official `mxgraph.alibaba_cloud.*` icons, hub-and-spoke landing zone patterns, traffic-flow color coding, and clean orthogonal routing. Includes a reference example diagram. | None |
+| [`moodboard-research`](moodboard-research/) | Build a visual moodboard for any creative brief — gathers 100–200 curated reference images from 9 sources (Pinterest, ArchDaily, ArtStation, Unsplash, Pexels, Are.na, Dezeen, Houzz, Dwell, Reddit) in parallel, scores each against a 6-axis rubric, deduplicates, and produces a single HTML contact sheet. | One-time `scripts/bootstrap.sh` (Node + Python venv + Playwright) — see [skill README](moodboard-research/README.md) |
 
 *(more skills will be added here over time)*
 
@@ -61,6 +62,8 @@ What skills do you have available?
 ```
 
 The newly installed skill name should appear in the list. The skill will then auto-trigger when you ask Claude to do tasks that match its description.
+
+> **Skills with extra setup:** Most skills here are pure markdown (instructions + references) and work as soon as they're dropped in. A few — like [`moodboard-research`](moodboard-research/) — bundle executable scripts and need a one-time bootstrap (Node.js, Python venv, Playwright). Check the **Extra setup** column in the skills table and follow the linked skill README. Claude will also offer to run the bootstrap automatically the first time the skill activates.
 
 ## Updating skills
 

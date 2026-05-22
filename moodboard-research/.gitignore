@@ -1,0 +1,12 @@
+# Build artifacts created by scripts/bootstrap.sh — never committed.
+node_modules/
+.venv/
+package-lock.json
+
+# Per-run outputs (created when the skill executes against a brief)
+_logs/
+_master_manifest.json
+_contact_sheet.html
+
+# OS noise
+.DS_Store

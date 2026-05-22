@@ -1,0 +1,11 @@
+{
+  "name": "moodboard-research",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Multi-source visual research pipeline for moodboards",
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "playwright": "^1.49.0",
+    "sharp": "^0.33.5"
+  }
+}

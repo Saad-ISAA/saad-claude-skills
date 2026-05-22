@@ -1,0 +1,14 @@
+{
+  "sources": [
+    { "id": "pinterest",       "runner": "node",   "script": "sources/pinterest.js",  "target": 25, "min_threshold": 6 },
+    { "id": "archdaily",       "runner": "node",   "script": "sources/archdaily.js",  "target": 20, "min_threshold": 8 },
+    { "id": "artstation",      "runner": "node",   "script": "sources/artstation.js", "target": 20, "min_threshold": 8, "note": "3D renders, not photos" },
+    { "id": "unsplash",        "runner": "node",   "script": "sources/unsplash.js",   "target": 15, "min_threshold": 8 },
+    { "id": "pexels",          "runner": "node",   "script": "sources/pexels.js",     "target": 15, "min_threshold": 8 },
+    { "id": "arena",           "runner": "python", "script": "sources/arena.py",      "target": 25, "min_threshold": 8 },
+    { "id": "dezeen",          "runner": "node",   "script": "sources/dezeen.js",     "target": 25, "min_threshold": 8 },
+    { "id": "houzz",           "runner": "node",   "script": "sources/houzz.js",      "target": 25, "min_threshold": 8 },
+    { "id": "dwell",           "runner": "node",   "script": "sources/dwell.js",      "target": 15, "min_threshold": 8 },
+    { "id": "reddit",          "runner": "python", "script": "sources/reddit.py",     "target": 30, "min_threshold": 7 }
+  ]
+}
