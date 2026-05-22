@@ -1,6 +1,14 @@
 # moodboard-research
 
-A Claude skill that builds a visual moodboard for any creative brief — gathers ~100–200 curated reference images from 9 sources in parallel, scores each against a 6-axis rubric, deduplicates, and produces a single HTML contact sheet.
+A Claude skill that builds a visual moodboard for any creative brief — gathers ~50–80 curated reference images from 9 sources in parallel, scores each against a 6-axis rubric, deduplicates, and produces a single HTML contact sheet.
+
+(Want more or fewer images? Edit the per-source `target` values in `scripts/sources.json`. Defaults sum to ~80–90 candidates, ~50–80 surviving after scoring and dedup.)
+
+## Supported platforms
+
+- **macOS** — works natively. Use the install steps below.
+- **Linux** — works natively. Use the install steps below. (On Debian/Ubuntu you may need `sudo apt-get install python3-venv` first.)
+- **Windows** — install [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) first, then run everything below from inside WSL. See the [Windows section](#windows-installing-via-wsl2) at the bottom. (No native PowerShell support yet.)
 
 ## Install
 
@@ -132,5 +140,64 @@ See `references/source-notes.md` for the contract every source scraper follows a
 
 - **"Playwright launch failed"** — re-run `bash scripts/bootstrap.sh`, then `npx playwright install chromium`
 - **A source returns 0 images** — check `<out>/_logs/<source>.log`; the site may have changed its layout or started blocking. See `references/source-notes.md` for known-good URL patterns.
-- **Bootstrap says Node not found** — install from https://nodejs.org/ (the official installer) and re-run.
+- **Bootstrap says Node not found** — install from <https://nodejs.org/> (the official installer) and re-run.
 - **The contact sheet shows broken images** — your file manager opened it from a different folder; the HTML uses relative paths. Open it from inside the output folder.
+
+## Windows: installing via WSL2
+
+This skill runs Playwright + Python scripts that assume a Unix-style filesystem and shell. The cleanest way to use it on Windows is **WSL2** (Windows Subsystem for Linux 2). It's a first-party Microsoft feature now — modern, supported, and free.
+
+### One-time WSL2 setup (~5 minutes + reboot)
+
+1. Open **PowerShell as Administrator** (Start menu → right-click "Windows PowerShell" → "Run as administrator").
+2. Run:
+   ```powershell
+   wsl --install
+   ```
+   This installs WSL2 + the default Ubuntu distribution. Reboot when prompted.
+3. After reboot, an **Ubuntu** terminal will open automatically. Set a username + password when asked. You only do this once.
+4. From now on, open the "Ubuntu" app from the Start menu whenever you want to use this skill.
+
+If `wsl --install` doesn't exist on your Windows version, follow the manual steps at <https://learn.microsoft.com/en-us/windows/wsl/install>.
+
+### Install the skill inside WSL
+
+Open the Ubuntu terminal (not PowerShell, not Command Prompt) and run:
+
+```bash
+# 1. Make sure Node and Python are available inside WSL
+sudo apt-get update
+sudo apt-get install -y nodejs npm python3 python3-venv python3-pip curl
+node --version    # should print v18+; if older, see note below
+python3 --version # should print 3.9+
+
+# 2. Install the skill (same one-liner as macOS/Linux)
+SKILL=moodboard-research
+mkdir -p ~/.claude/skills
+curl -L "https://github.com/Saad-ISAA/saad-claude-skills/archive/refs/heads/main.tar.gz" \
+  | tar -xz --strip-components=1 -C ~/.claude/skills "saad-claude-skills-main/$SKILL"
+
+# 3. Bootstrap
+bash ~/.claude/skills/moodboard-research/scripts/bootstrap.sh
+```
+
+> **If Ubuntu's apt installs an old Node (< 18):** install a newer one via NodeSource:
+> ```bash
+> curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+> sudo apt-get install -y nodejs
+> ```
+
+### Running Claude Code on Windows
+
+You can either:
+
+- **Use Claude Code inside WSL** (recommended) — install Claude Code in your Ubuntu environment; it will pick up the skill from `~/.claude/skills/moodboard-research/` automatically.
+- **Use Claude Code on Windows + skill in WSL** — copy the skill into Windows-side `%USERPROFILE%\.claude\skills\`. The skill files are there, but `bash scripts/bootstrap.sh` still has to run from inside WSL (just point WSL's bash at the Windows path: `bash /mnt/c/Users/YOU/.claude/skills/moodboard-research/scripts/bootstrap.sh`). This is more brittle and not recommended.
+
+### Where do the output images live?
+
+Inside WSL, your home directory is `/home/<your-wsl-username>/`. You can access WSL files from Windows File Explorer at `\\wsl$\Ubuntu\home\<your-wsl-username>\` — the moodboard contact sheet will open in Windows Edge / Chrome from there.
+
+### Why no native PowerShell support?
+
+The skill could be ported (rewrite `bootstrap.sh` as `bootstrap.ps1`, patch `orchestrate.js` to handle the Windows venv path `.venv\Scripts\python.exe`). The author is on macOS and hasn't tested PowerShell, so WSL2 is shipped as the supported Windows path. If you'd like native PowerShell support, please open an issue.

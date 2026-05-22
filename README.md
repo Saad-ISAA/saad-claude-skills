@@ -7,7 +7,7 @@ A collection of public [Claude Code](https://claude.com/claude-code) skills that
 | Skill | Description | Extra setup |
 |-------|-------------|-------------|
 | [`drawio-alibaba-cloud`](drawio-alibaba-cloud/) | Create professional Alibaba Cloud architecture diagrams as native `.drawio` files using official `mxgraph.alibaba_cloud.*` icons, hub-and-spoke landing zone patterns, traffic-flow color coding, and clean orthogonal routing. Includes a reference example diagram. | None |
-| [`moodboard-research`](moodboard-research/) | Build a visual moodboard for any creative brief — gathers 100–200 curated reference images from 9 sources (Pinterest, ArchDaily, ArtStation, Unsplash, Pexels, Are.na, Dezeen, Houzz, Dwell, Reddit) in parallel, scores each against a 6-axis rubric, deduplicates, and produces a single HTML contact sheet. | One-time `scripts/bootstrap.sh` (Node + Python venv + Playwright) — see [skill README](moodboard-research/README.md) |
+| [`moodboard-research`](moodboard-research/) | Build a visual moodboard for any creative brief — gathers ~50–80 curated reference images from 9 sources (Pinterest, ArchDaily, ArtStation, Unsplash, Pexels, Are.na, Dezeen, Houzz, Dwell, Reddit) in parallel, scores each against a 6-axis rubric, deduplicates, and produces a single HTML contact sheet. | One-time `scripts/bootstrap.sh` (Node + Python venv + Playwright). macOS / Linux / WSL2. See [skill README](moodboard-research/README.md). |
 
 *(more skills will be added here over time)*
 

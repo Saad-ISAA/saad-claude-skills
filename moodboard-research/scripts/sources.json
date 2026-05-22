@@ -1,14 +1,15 @@
 {
+  "_comment": "Per-source image targets. Sum across sources lands ~80-90 candidates; after scoring + cross-source dedup, the final contact sheet typically has 50-80 images. Bump targets here if you want more.",
   "sources": [
-    { "id": "pinterest",       "runner": "node",   "script": "sources/pinterest.js",  "target": 25, "min_threshold": 6 },
-    { "id": "archdaily",       "runner": "node",   "script": "sources/archdaily.js",  "target": 20, "min_threshold": 8 },
-    { "id": "artstation",      "runner": "node",   "script": "sources/artstation.js", "target": 20, "min_threshold": 8, "note": "3D renders, not photos" },
-    { "id": "unsplash",        "runner": "node",   "script": "sources/unsplash.js",   "target": 15, "min_threshold": 8 },
-    { "id": "pexels",          "runner": "node",   "script": "sources/pexels.js",     "target": 15, "min_threshold": 8 },
-    { "id": "arena",           "runner": "python", "script": "sources/arena.py",      "target": 25, "min_threshold": 8 },
-    { "id": "dezeen",          "runner": "node",   "script": "sources/dezeen.js",     "target": 25, "min_threshold": 8 },
-    { "id": "houzz",           "runner": "node",   "script": "sources/houzz.js",      "target": 25, "min_threshold": 8 },
-    { "id": "dwell",           "runner": "node",   "script": "sources/dwell.js",      "target": 15, "min_threshold": 8 },
-    { "id": "reddit",          "runner": "python", "script": "sources/reddit.py",     "target": 30, "min_threshold": 7 }
+    { "id": "pinterest",       "runner": "node",   "script": "sources/pinterest.js",  "target": 12, "min_threshold": 6 },
+    { "id": "archdaily",       "runner": "node",   "script": "sources/archdaily.js",  "target": 10, "min_threshold": 8 },
+    { "id": "artstation",      "runner": "node",   "script": "sources/artstation.js", "target": 8,  "min_threshold": 8, "note": "3D renders, not photos" },
+    { "id": "unsplash",        "runner": "node",   "script": "sources/unsplash.js",   "target": 8,  "min_threshold": 8 },
+    { "id": "pexels",          "runner": "node",   "script": "sources/pexels.js",     "target": 8,  "min_threshold": 8 },
+    { "id": "arena",           "runner": "python", "script": "sources/arena.py",      "target": 10, "min_threshold": 8 },
+    { "id": "dezeen",          "runner": "node",   "script": "sources/dezeen.js",     "target": 10, "min_threshold": 8 },
+    { "id": "houzz",           "runner": "node",   "script": "sources/houzz.js",      "target": 10, "min_threshold": 8 },
+    { "id": "dwell",           "runner": "node",   "script": "sources/dwell.js",      "target": 6,  "min_threshold": 8 },
+    { "id": "reddit",          "runner": "python", "script": "sources/reddit.py",     "target": 12, "min_threshold": 7 }
   ]
 }

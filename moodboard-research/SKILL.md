@@ -1,11 +1,11 @@
 ---
 name: moodboard-research
-description: Build a visual moodboard for any creative brief by gathering 100+ curated reference images from 9 image sources (Pinterest, ArchDaily, ArtStation, Unsplash, Pexels, Are.na, Dezeen, Houzz, Dwell, Reddit) in parallel, then producing a self-contained HTML contact sheet. Use when the user asks for inspiration images, references, moodboard, visual research, or to "gather pictures" for a theme, mood, or design brief.
+description: Build a visual moodboard for any creative brief by gathering ~50-80 curated reference images from 9 image sources (Pinterest, ArchDaily, ArtStation, Unsplash, Pexels, Are.na, Dezeen, Houzz, Dwell, Reddit) in parallel, then producing a self-contained HTML contact sheet. Use when the user asks for inspiration images, references, moodboard, visual research, or to "gather pictures" for a theme, mood, or design brief.
 ---
 
 # Moodboard Research Skill
 
-A multi-agent visual-research pipeline. Given a creative brief (subject + mood + style + palette + avoid list), the skill gathers ~100–200 curated reference images from 9 sources in parallel, scores each against a 6-axis rubric, deduplicates, and produces an HTML contact sheet.
+A multi-agent visual-research pipeline. Given a creative brief (subject + mood + style + palette + avoid list), the skill gathers ~50–80 curated reference images from 9 sources in parallel, scores each against a 6-axis rubric, deduplicates, and produces an HTML contact sheet. (Per-source `target` counts are in `scripts/sources.json` — edit if you want more or fewer.)
 
 ## When to invoke
 
