@@ -8,6 +8,7 @@ A collection of public [Claude Code](https://claude.com/claude-code) skills that
 |-------|-------------|-------------|
 | [`drawio-alibaba-cloud`](drawio-alibaba-cloud/) | Create professional Alibaba Cloud architecture diagrams as native `.drawio` files using official `mxgraph.alibaba_cloud.*` icons, hub-and-spoke landing zone patterns, traffic-flow color coding, and clean orthogonal routing. Includes a reference example diagram. | None |
 | [`moodboard-research`](moodboard-research/) | Build a visual moodboard for any creative brief — gathers ~50–80 curated reference images from 9 sources (Pinterest, ArchDaily, ArtStation, Unsplash, Pexels, Are.na, Dezeen, Houzz, Dwell, Reddit) in parallel, scores each against a 6-axis rubric, deduplicates, and produces a single HTML contact sheet. | One-time `scripts/bootstrap.sh` (Node + Python venv + Playwright). macOS / Linux / WSL2. See [skill README](moodboard-research/README.md). |
+| [`architecture-spine`](architecture-spine/) | Keep **one implementation per concern** in codebases an AI agent writes most of — the spine pattern (registry → resolver → seam → enforcement test) across authorization, multi-tenancy, middleware, tools/MCP/integrations, event buses, notifications, jobs, databases, LLM routing, vector stores, DLP, observability and agent-to-agent delegation. Includes a drift-inventory script, test recipes, a drop-in `CLAUDE.md` block, and three migration modes (opportunistic / phased by joint / full). | None |
 
 *(more skills will be added here over time)*
 
