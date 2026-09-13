@@ -12,7 +12,7 @@ test**. Full detail for each is in `spine-guide.md` at the section listed.
 |---|---|---|---|---|---|---|
 | Errors & messages | 4.10 | Error code catalogue, protocol mapping, locale messages, one normaliser | — | S | M | Client handling is inconsistent; support cannot correlate a failure |
 | Observability | 4.17 | One tracer, span naming, correlation/run ids, redaction before export | errors | S | H | You cannot answer "what happened in this request"; LLM traces don't join app traces |
-| Config & flags | 4.12 | Typed config, startup validation, one flag service | — | S | M | `getenv` at call sites; a flag with no owner or removal date |
+| Config, env & credentials | 4.12 | Typed config schema, one loader, redaction by marker, env registry parity, tenant credentials as encrypted data, flags | — | S | H | `getenv` at call sites; more than one `.env`; a secret in a public-prefixed variable; a settings object printed or logged |
 | Identity & subjects | 3.1 | Users, services, API keys, agents, delegation, scopes | — | M | H | Anything below is blocked; an agent or key needs its own identity |
 | Tenancy | 3.2 | Isolation boundary, scoping by construction, residency, per-tenant keys | identity | M | H | A cross-tenant scare; tenant and workspace are the same column |
 | **Authorization** | 3 | Resource registry, membership, resolver, `require_read`/`require_role`, `readable_ids` | identity, tenancy | **L** | **H** | Two or more sharing models; "who can see this?" has no single answer |
@@ -35,6 +35,17 @@ test**. Full detail for each is in `spine-guide.md` at the section listed.
 Effort is relative to your codebase, not absolute. The order is a **dependency**
 order, not a priority order — within what is unblocked, take the joint with the
 worst inventory number or the most debt entries.
+
+## Before any joint: Spine 0 and the spines you already have
+
+- **Spine 0 — the gate.** If CI does not run the test suite before every deploy,
+  nothing below is enforced. Fix that first.
+- **Existing spines.** A repository may already have a spine for some joint, under
+  a domain name. Map it to the joints it covers (often several, partially), record
+  its boundary, and extend it within that boundary. One existing spine never
+  becomes the home for an unrelated joint.
+- **Naming.** Each new spine is named after what it governs — `access/`, `gateway/`,
+  `dispatch/`, `vault/`, `ledger/` — never `spine/`, `core/` or `common/`.
 
 ## Sequencing rules
 
@@ -67,4 +78,6 @@ worst inventory number or the most debt entries.
 | Retrieval | Two tenants, one query, zero cross-tenant hits; deleted resource ⇒ no chunks |
 | DLP | Canary: synthetic PII and a fake credential never appear in any egress |
 | Errors | Every code has a message in every locale, and every message maps to a code |
-| Layout | Import direction one-way; baseline of violations can only shrink |
+| Layout | Layer map one-way (function-local imports count); baseline is a ceiling — no new, never grows, no stale |
+| Config & env | Env registry parity (code ↔ schema ↔ example ↔ deploy); settings `repr` redaction by marker; startup refuses placeholders |
+| Spine map | Every listed package, registry, resolver and test exists; every spine states owns / does not own |

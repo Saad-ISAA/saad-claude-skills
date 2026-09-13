@@ -352,6 +352,14 @@ integration and not the others.
 > in the catalogue has a schema, a side-effect class and an authz rule —
 > exhaustively, generated from the registry.
 
+**No query-anything tools.** A tool that accepts any table, model, collection or
+filter expression — or raw SQL — is an exfiltration primitive for anyone who can
+steer the model, including through a document it was asked to read. The same is
+true of an administrator "run any query" endpoint for anyone who steals an admin
+session. Tools take narrow, typed parameters over an allowlist of entities and
+fields, and their results pass through the caller's authorization — which is what
+the catalogue's schema field is for.
+
 **Internal vs external is a driver detail, not an architecture.** An internal tool
 is a function call; an external one is an HTTP request. Both go through `invoke`,
 so both get the same audit trail, the same failure semantics and the same kill
@@ -662,13 +670,42 @@ a window, anonymise, retain for legal hold), and the audit log is exempt by desi
 in writing. Field-level PII classification lives in the schema, so the exporter and
 the redactor read it instead of hardcoding field lists.
 
-### 4.12 Configuration and flags
+### 4.12 Configuration, environment and credentials
 
-One typed configuration object, validated at startup, failing loudly on a missing
-required value. One flag service; flags are evaluated in one place and every flag
-has an owner and a removal date. Secrets come from the secret store, not the config
-file. Scattered `getenv` at call sites is the same disease as scattered access
-checks, with worse symptoms.
+**Registry:** the configuration schema — every variable declared once, typed,
+required or defaulted, and marked secret where it is one.
+**Resolver:** one loader, run at startup, failing loudly.
+**Seam:** the typed configuration object. No `getenv`, `os.environ`, `process.env`
+or `import.meta.env` anywhere else.
+
+Three kinds of value live in three different homes, and most credential incidents
+start with a value in the wrong one:
+
+| Kind | Home |
+|---|---|
+| Configuration (URLs, toggles, sizes) | The typed config object |
+| Platform secrets (DB password, signing keys, provider keys) | A secret store in deployed environments, injected at runtime; a local `.env` only for local development |
+| Tenant credentials (a customer's OAuth tokens and API keys) | The database, encrypted, resolved per tenant by the credential resolver — **never** the environment |
+
+- **Fail at startup, not at first use** — on a missing value, a malformed one, a
+  signing key under its minimum length, or a known placeholder.
+- **Redact by marker, never by list.** The default `repr` of most settings objects
+  is a credential dump, and a single exception raised on it is enough to print the
+  whole thing into a CI log. Redact any field named like `PASSWORD`, `SECRET`,
+  `KEY`, `TOKEN` — so next year's credential is hidden because of what it is
+  called, not because someone remembered to add it to a list.
+- **One `.env` location per deployable.** Two files at different depths are two
+  configurations that will disagree.
+- **`.env.example` is generated from the schema, or tested equal to it.** Test the
+  four-way agreement: code references ↔ schema ↔ example ↔ deployment files.
+- **Public prefixes are publication.** `VITE_*`, `NEXT_PUBLIC_*`, `REACT_APP_*` and
+  friends are compiled into every browser bundle.
+- **One flag service**; every flag has an owner and a removal date.
+
+Scattered `getenv` at call sites is the same disease as scattered access checks,
+with worse symptoms. The security half of this joint — the audit checklist, the
+leak-response order, the redaction test — is vertebra V4 of the security spine
+companion.
 
 ### 4.13 Databases and persistence
 
@@ -1194,6 +1231,12 @@ one is a testable claim about your system:
     retrieval that skips the resolver is the fastest way to leak every document in
     the tenant.
 
+13. **A prompt is not a permission.** An instruction telling a model to stay inside
+    its current context restricts nothing if the tool would succeed when called
+    with another id. Bind tools server-side to the resource in context and authorise
+    every call through the same seam as the API — that, not the prompt, is what
+    stops a model being used as a pivot into someone else's data.
+
 ---
 
 ## 8. The rules
@@ -1420,6 +1463,19 @@ code that most needs to be on the spine. Migration effort ends up tracking risk 
 its own, and it never needs separate approval, because the work was already
 authorised as a bug fix.
 
+**Features pay too — and are often the better lever.** Do not run the spine as its
+own programme. Large joints that users never see stall when they are scheduled as
+standalone projects, and they compete with the product for the same weeks. Instead,
+choose features that *need* a piece of a joint, and build that piece for the
+feature: the first email feature builds the dispatcher and the egress adapter it
+sends through, and the other call sites move the next time someone touches them.
+Leave the largest joints until a feature needs them.
+
+Once the ratchet is on, this changes the arithmetic. New work can no longer make
+the ratcheted areas worse, so every feature is either neutral or pays down a joint
+— and a feature that pays for a joint is the easiest migration anyone will ever
+approve.
+
 **The escape hatch, which is mandatory.** Sometimes the move is far larger than the
 bug: it touches two joints, or twelve files, or needs a data migration. Then fix in
 place — and **write a debt entry** in the same commit:
@@ -1505,8 +1561,9 @@ the first (speculative generality) and not the fourth (this section). The whole 
 ### 11.6 Rules that hold in every mode
 
 1. **New code is spine-only.** No exceptions, in any mode.
-2. **The ratchet is on from day one** (§13.2). The baseline can shrink; it can never
-   gain an entry.
+2. **The ratchet is on from day one** (§13.2). The baseline is a ceiling: it
+   shrinks with every fix, has no stale entries, and gains an entry only
+   deliberately, with the reason in the commit.
 3. **A migration commit does four things at once**: convert the caller, delete the
    old path, add the matrix row, shrink the baseline. If you cannot delete, you have
    not migrated — you have forked.
@@ -1545,7 +1602,7 @@ it looks principled.
 
 ---
 
-## 13. Code layout — where the spine lives on disk
+## 13. Code layout — where the spines live on disk
 
 Folder structure is not cosmetics here. An agent's default behaviour is to put new
 code **next to the code it is editing**, so the layout decides what the path of
@@ -1554,82 +1611,93 @@ does more for uniformity than any amount of instruction.
 
 Two properties matter, and only two:
 
-1. **There is one obvious place for each concern**, and it is visible at the top
-   level.
+1. **There is one obvious place for each concern, named after what it governs.**
 2. **The dependency direction is one-way and testable.** Without that test, a
    folder structure is decoration.
+
+### "Spine" is a pattern, not a place
+
+Earlier drafts of this guide put every spine under one `spine/` directory. Real
+use argued that down, and the reasoning is worth keeping.
+
+A generic name attracts everything. `spine/`, `core/`, `common/`, `shared/` and
+`platform/` carry no boundary in their name, so every agent's local optimum is to
+put one more thing in them — and the result is a god-package: one directory, many
+concerns. That is the failure this whole document exists to prevent, reproduced
+one level up.
+
+So each spine is a package **named after what it governs** — `access/` for
+authorization, `gateway/` for every external system the product reaches,
+`dispatch/` for notifications, `vault/` for configuration and credentials,
+`ledger/` for audit. The word *spine* lives in the vocabulary — the docs, the
+`CLAUDE.md`, the tests — not in the directory tree.
+
+**The naming test:** if the name would still make sense after an unrelated concern
+were added to it, it is too generic.
+
+What makes spines findable is not a shared parent directory. It is the **spine
+map** (§13.3).
 
 ### 13.1 A new project
 
 ```
 src/
-  spine/                    # ONE implementation per concern — the protected core
-    identity/               # subjects, auth methods, delegation, sessions
-    tenancy/                # tenant resolution, scoping, isolation
-    authz/                  # resource registry, resolver, require_read/require_role,
-                            #   readable_ids, explain
-    transport/              # ActorContext, middleware pipeline, error normaliser
-    tools/                  # tool catalogue, invoke(), kill switches, MCP connections
-    events/                 # envelope, outbox, publisher, consumer runtime
-    jobs/                   # enqueue, worker runtime, job envelope
-    notifications/          # dispatcher, template catalogue, preferences
-    models/                 # model routes, prompt registry, complete/embed seam
-    retrieval/              # index catalogue, retrieve()
-    storage/                # blobs, signed URLs
-    secrets/                # secret store, egress client, allowlist
-    data/                   # session/unit-of-work, repository base, migrations runner
-    dlp/                    # classification, redaction, policy matrix
-    quota/  audit/  errors/  config/  observability/
+  identity/      subjects, authentication drivers, delegation      ┐
+  tenancy/       tenant resolution, structural scoping             │  spines:
+  access/        resource registry, resolver, require_read/_role   │  each named
+  edge/          ActorContext, middleware pipeline, errors         │  for what it
+  gateway/       tool catalogue, invoke(), outbound client, MCP    │  governs,
+  vault/         config loader, secret store, credential resolver  │  each with a
+  events/        envelope, outbox, publisher, consumer runtime     │  README that
+  jobs/          enqueue seam, capability envelope, workers        │  states its
+  dispatch/      notifications: dispatcher, templates, prefs       │  boundary
+  models/        model routes, prompt registry, complete/embed     │
+  retrieval/     index catalogue, retrieve()                       │
+  ledger/        audit                                             ┘
+                 …only the ones this product has — the rest wait for
+                 their second instance
 
-  modules/                  # the product. Thin. No module imports another module.
-    projects/
-      model.*  schema.*  service.*  routes.*  mcp_tools.*  module.*  tests/
-    boards/
-    documents/
+  modules/       the product. Thin. No module imports another module.
+    projects/    model.* schema.* service.* routes.* mcp_tools.* module.* tests/
+  adapters/      the ONLY place a vendor name appears
+  transports/    http/ mcp/ cli/ webhooks/ worker/ — translate and delegate
 
-  adapters/                 # the ONLY place a vendor name appears
-    anthropic/  openai/  ses/  s3/  stripe/  qdrant/  langfuse/  kafka/
-
-  transports/               # entry points; they translate and delegate, nothing else
-    http/  mcp/  cli/  webhooks/  worker/
-
-tests/
-  uniformity/               # the enforcement suite from §9 — a first-class directory
-migrations/
+docs/spines.md   the spine map (§13.3)
+tests/uniformity/  layers, spine map, matrix, exhaustiveness
 ```
 
 **The rules the layout encodes:**
 
-- **Dependency direction is one-way:**
-  `transports → modules → spine → adapters`. Never sideways (module to module),
-  never upward (spine importing a module). An import-graph test enforces it, and
-  that test is what turns this diagram into architecture. Cross-module work is
-  either an event (§4.4) or a function on the spine.
+- **Dependency direction is declared as a ranked layer map** — for example
+  `transports → modules → spines → adapters and foundation`. A module may import
+  its own rank or below, never above, and never sideways into another module. The
+  composition root — the one file that wires the application together — is the
+  single exemption, because wiring everything is its job. Function-local imports
+  count: that is exactly where a circular dependency gets dodged, and therefore
+  exactly where the coupling hides.
 - **`modules/*` are uniform.** Every module has the same file set, and a test
-  asserts it — a new module without `tests/` or without `module.*` is a red build,
-  not a review comment.
-- **`module.*` is the registration file**: it declares the module's resource types,
-  events, tools, notification types and error codes. The registries are then
-  *discovered* by walking `modules/`, not hand-maintained — which is what makes the
-  exhaustiveness tests in §9 real rather than aspirational.
-- **`adapters/*` implement interfaces defined in `spine/`.** Nothing imports an
-  adapter directly except the spine that owns it. Swapping a provider is one
-  directory.
-- **`spine/README.md` states the invariant in three sentences** and is the first
-  thing anyone — human or agent — reads on entering the directory. Put the
-  "adding a module = a type string plus one FK" line there.
+  asserts it.
+- **`module.*` is the registration file.** It declares the module's resource types,
+  events, tools, notification types and error codes, so registries are *discovered*
+  by walking `modules/` rather than hand-maintained.
+- **Adapters implement interfaces owned by the spine that uses them.** Swapping a
+  provider is one directory.
+- **Every spine's README states its four parts and its boundary** — what it owns,
+  and just as importantly, what it does **not** own.
+- **A spine does not absorb other joints.** An existing, well-named spine is the
+  most tempting place to put the next concern. Extending a spine beyond its stated
+  boundary is how a clean layer becomes a god-package. A new joint gets its own
+  domain-named spine.
 
 **Frontend, same shape:** one API client, one error translator, one auth/session
-context, one i18n catalogue, one design-token file, then feature folders that import
-from those and never from each other. The failure mode is identical — four fetch
-wrappers, three toast systems, two date formatters — and so is the fix.
+context, one i18n catalogue, one design-token file, then feature folders that
+import from those and never from each other.
 
 **Services, if you have them (§5):** the same layout inside each service, with
-`spine/` supplied by a shared internal package rather than a local directory. The
-uniformity suite runs **inside every service**, because an agent's context is the
-repository it is in.
+spines supplied as shared internal packages. The uniformity suite runs **inside
+every service**, because an agent's context is the repository it is in.
 
-### 13.2 Introducing a spine into an existing project
+### 13.2 Introducing spines into an existing project
 
 The instinct is to reorganise the folders first. Resist it: a large move commit
 changes no behaviour, destroys `git blame`, collides with everything in flight, and
@@ -1637,32 +1705,97 @@ buys nothing that a test would not buy sooner.
 
 Do it as a **ratchet**, in this order:
 
-1. **Create `spine/` containing exactly one thing** — the first spine you are
-   extracting (usually authorization, per §11). Nothing else moves.
-2. **Add the import-direction test immediately, with today's violations recorded in
-   a baseline file.** This is the whole technique: the test asserts the baseline
-   **never grows**, and every violation removed is deleted from the file. A new
-   parallel implementation fails CI on the day it is written, while the existing
-   mess stays legal until someone touches it. You get enforcement on day one without
-   a migration.
+0. **Check that a gate exists.** Enforcement tests enforce nothing if nothing runs
+   them before a deploy. If CI does not run the suite before every release, that is
+   the first joint — call it *Spine 0* — and it comes before everything below.
+1. **Look for spines that already exist, under any name** (§13.4). Adopt them. Do
+   not create a parallel one — a new `spine/` directory beside an existing
+   one-concern layer is the exact drift, performed by the tool meant to prevent it.
+2. **Declare the layer map from what the repository actually has**, not from the
+   ideal layout above. Rank the directories that exist today.
+3. **Add the ratchet test, with today's violations recorded in a baseline file.**
+   Three assertions, and the third is the one people miss:
 
    ```
-   tests/uniformity/baseline_violations.txt   # 143 lines today, 0 eventually
-   assert len(current_violations) <= len(baseline)
-   assert current_violations ⊆ baseline        # no NEW ones, ever
+   assert current ⊆ baseline              # no new violations
+   assert len(current) <= len(baseline)   # the count never grows
+   assert baseline ⊆ current              # no stale entries
    ```
 
-3. **Move one concern at a time**, following §11: build beside, backfill, convert
-   module by module, then **delete the old path** and shrink the baseline in the
-   same commit.
-4. **Move files only when you are already editing them.** Opportunistic relocation
-   keeps the diffs reviewable and the history readable.
-5. **Update `CLAUDE.md` (§14) the moment the first spine lands**, not at the end.
-   The rule has to exist before the next agent writes the next module.
+   Without the stale check, a fixed violation stays listed, the headroom silently
+   returns, and someone re-introduces it for free. **The baseline is a ceiling,
+   not a target.** A violation that is genuinely correct may be added — with the
+   reason in the commit message. Adding a line grants permission for drift; it
+   should feel deliberate and be visible in review.
+4. **Write the rules you rejected into the test's docstring.** If your best module
+   would fail a proposed rule, the rule is wrong, not the module — a rule that
+   fails the pattern you are trying to spread is a bad rule. Recording the
+   rejection stops the next agent from re-proposing it.
+5. **Write down what the test cannot see.** Import rules are blind to semantic
+   duplication: two modules each defining their own `create_api_key` import nothing
+   illegal. Name the gap. One working rule beats two half-built ones.
+6. **Move one concern at a time** (§11): build beside, backfill, convert, then
+   **delete the old path** and shrink the baseline in the same commit. Move files
+   only when you are already editing them.
+7. **Update `CLAUDE.md` (§14) the moment the first spine lands**, including a spine
+   status: the current migration mode, the **known-absent joints** ("do not assume
+   these exist"), and the **healthy joints** ("protect them, copy them").
 
-A useful early signal: the baseline file's line count is the best single number for
-"how far along is this?" — better than a plan document, because it is measured
-rather than asserted (§8, rule 15).
+The baseline file's line count is the best single progress number you have —
+measured, not asserted (§8, rule 15). A baseline scoped to one rule (say, ad-hoc
+HTTP clients) doubles as that migration's progress bar.
+
+### 13.3 The spine map
+
+One document — `docs/spines.md`, or a section of `CLAUDE.md` — with one row per
+spine:
+
+| Spine | Package | Joint(s) | Registry | Resolver | Seam | Enforcement | Owns | Does not own |
+|---|---|---|---|---|---|---|---|---|
+
+It is the registry of registries, and it gets the same treatment as every other
+registry: **a test asserts that every package listed exists, every named registry
+and resolver symbol resolves, and every enforcement test file exists.** A map that
+can rot silently is a map that will.
+
+Two habits that make a spine survive the session that designed it:
+
+- **State the spine's migration roadmap in its package docstring**, in a fixed order
+  — *"source adapters → vector stores → model clients → storage"*. The order is a
+  decision; put it where the next agent reads it.
+- **Ship call sites before sinks.** Route new call sites through the seam even while
+  the seam still writes to a log line. The later migration is then a sink swap
+  rather than a re-instrumentation of every endpoint written in the meantime.
+
+### 13.4 Recognising a spine that already exists
+
+Detect spines by **shape**, never by name. Signals, strongest first:
+
+- A test that asserts **declarations or structure**, not only behaviour.
+- A package whose docstring or README claims one concern and says it is the only
+  place that concern is handled.
+- A **registry**: an enum of types, a dict of builders, a table of kinds, a set of
+  protocol declarations.
+- A **resolver** with high fan-in — many modules call one function.
+- A narrow **interface** (protocol, abstract class, interface) that adapters
+  implement.
+- Mentions in `CLAUDE.md`, `AGENTS.md` or architecture decision records.
+
+Names are weak evidence either way. `core/` or `platform/` is often a junk drawer,
+and a genuine spine may be called anything — `fabric`, `gateway`, `kernel`,
+`chassis`, `access`.
+
+When you find one:
+
+1. **Map it to joints.** One existing spine often covers several joints partially —
+   an egress layer might own authentication to external systems, transport and
+   per-tenant telemetry, but not model routing or retrieval semantics.
+2. **Read its boundary.** If none is written, write one with the owner before
+   extending it.
+3. **Extend within the boundary**, and adopt its vocabulary and naming in
+   everything you write.
+4. **Never fold an unrelated joint into it** because it exists and has a good name.
+5. **Add it to the spine map.**
 
 ---
 
@@ -1705,9 +1838,16 @@ rather than asserted (§8, rule 15).
   id, prompt string or provider SDK outside the model spine and its adapters.
 - **Retrieval filters by the authz resolver BEFORE the search, never after**, and
   chunks follow their resource on delete, move and re-permission.
-- **New code goes in `spine/` (one per concern), `modules/` (thin, never importing
-  each other) or `adapters/` (the only place a vendor name appears).** Dependency
-  direction is one-way: transports → modules → spine → adapters.
+- **Spines are named after what they govern** (`access/`, `gateway/`,
+  `dispatch/`) — never a generic `spine/`, `core/` or `common/`. Before creating
+  one, read the spine map and look for an existing layer that already owns the
+  concern under another name; extend it within its stated boundary, and never
+  fold an unrelated concern into it. `modules/` stay thin and never import each
+  other; `adapters/` are the only place a vendor name appears. The layer map is
+  one-way and tested.
+- **Configuration is read in one loader.** No env reads anywhere else; secrets are
+  redacted by name marker; nothing secret in a public-prefixed variable; tenant
+  credentials live encrypted in the database, never in the environment.
 - **New code is spine-only**, always. **A bug in old code is a migration:** do
   not fix it where it lives — move that path onto the spine and fix it there,
   deleting the old path in the same commit. If the move is genuinely larger than
@@ -1771,8 +1911,9 @@ does not exist yet — which, in a codebase an agent writes, is most of it.
 15. Build the spine at the **second** instance — not the first, not the fourth.
 16. Filter retrieval before the search, not after — and let chunks follow their
     resource.
-17. The layout decides the path of least resistance; an import-direction test is
-    what makes it architecture. Retrofit with a baseline that can only shrink.
+17. Name each spine for what it governs, and find the ones that already exist
+    before building one. The layout decides the path of least resistance; a tested
+    layer map makes it architecture; a baseline is a ceiling, never a target.
 18. New code is spine-only, always. A bug in old code is a migration, not a
     patch — the bug pays for the move.
 19. Delete the old path, or you have two.

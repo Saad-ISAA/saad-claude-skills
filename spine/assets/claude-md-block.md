@@ -1,6 +1,7 @@
 <!-- Paste the block below into the target repository's CLAUDE.md / AGENTS.md.
      It is the agent-facing contract for the spine. Keep it verbatim; trim only
-     bullets for joints that repository genuinely does not have. -->
+     bullets for joints that repository genuinely does not have. For security
+     controls, add the block from the spine-security skill as well. -->
 
 ## Architecture discipline (non-negotiable)
 
@@ -38,9 +39,16 @@
   id, prompt string or provider SDK outside the model spine and its adapters.
 - **Retrieval filters by the authz resolver BEFORE the search, never after**, and
   chunks follow their resource on delete, move and re-permission.
-- **New code goes in `spine/` (one per concern), `modules/` (thin, never importing
-  each other) or `adapters/` (the only place a vendor name appears).** Dependency
-  direction is one-way: transports → modules → spine → adapters.
+- **Spines are named after what they govern** (`access/`, `gateway/`,
+  `dispatch/`) — never a generic `spine/`, `core/` or `common/`. Before creating
+  one, read the spine map and look for an existing layer that already owns the
+  concern under another name; extend it within its stated boundary, and never
+  fold an unrelated concern into it. `modules/` stay thin and never import each
+  other; `adapters/` are the only place a vendor name appears. The layer map is
+  one-way and tested.
+- **Configuration is read in one loader.** No env reads anywhere else; secrets are
+  redacted by name marker; nothing secret in a public-prefixed variable; tenant
+  credentials live encrypted in the database, never in the environment.
 - **New code is spine-only**, always. **A bug in old code is a migration:** do
   not fix it where it lives — move that path onto the spine and fix it there,
   deleting the old path in the same commit. If the move is genuinely larger than

@@ -1,0 +1,85 @@
+# Security control register — the registry of the security spine.
+#
+# One entry per in-scope control from references/vertebrae.md.
+# tests/security/test_register.py asserts every claim below is real:
+#   enforced    -> chokepoint resolves AND test exists (and CI runs it)
+#   centralised -> chokepoint resolves
+#   exempt      -> reason AND reverse_when present
+#   n/a         -> reason present
+#
+# NEVER put a secret value in this file. Evidence is a location and a type.
+
+version: 1
+system: <system name>
+updated: <YYYY-MM-DD>
+gate: <yes|no>        # SUPPLY-1: does CI run the suite before every deploy?
+
+controls:
+  - id: SUPPLY-1
+    vertebra: V18
+    title: Tests run before every deploy
+    status: enforced          # enforced | centralised | scattered | absent | exempt | n/a
+    severity: ""              # severity of the GAP; empty when enforced
+    chokepoint: .github/workflows/deploy.yml::test
+    test: .github/workflows/deploy.yml::deploy.needs
+    evidence: []
+    reason: ""
+    reverse_when: ""
+    owner: <name>
+    reviewed: <YYYY-MM-DD>
+
+  - id: ABUSE-1
+    vertebra: V7
+    title: One rate limiter, backed by a shared store
+    status: scattered
+    severity: high
+    chokepoint: ""            # the joint it belongs in once centralised, e.g. app/edge/limits.py::limiter
+    test: ""
+    evidence:
+      - app/api/auth.py:41 — decorator limiter with a literal "5/minute"
+      - app/api/export.py:12 — in-process counter (per-worker)
+      - app/middleware/throttle.py:8 — third implementation
+    reason: ""
+    reverse_when: ""
+    owner: <name>
+    reviewed: <YYYY-MM-DD>
+
+  - id: SECRETS-2
+    vertebra: V4
+    title: Secrets redacted in repr, logs and tracebacks by name marker
+    status: enforced
+    severity: ""
+    chokepoint: app/config.py::Settings.__repr_args__
+    test: tests/test_config.py::test_settings_never_print_secrets
+    evidence: []
+    reason: ""
+    reverse_when: ""
+    owner: <name>
+    reviewed: <YYYY-MM-DD>
+
+  - id: MCP-1
+    vertebra: V16
+    title: Exposed MCP server accepts only tokens issued for it
+    status: n/a
+    severity: ""
+    chokepoint: ""
+    test: ""
+    evidence: []
+    reason: The system exposes no MCP server.
+    reverse_when: ""
+    owner: <name>
+    reviewed: <YYYY-MM-DD>
+
+  - id: EDGE-2
+    vertebra: V8
+    title: Security headers set once, including on error responses
+    status: exempt
+    severity: low
+    chokepoint: ""
+    test: ""
+    evidence:
+      - Headers are set by the reverse proxy, outside this repository.
+    reason: Owned by the ingress configuration in the infrastructure repository.
+    reverse_when: The application is served without that ingress (e.g. a second region).
+    owner: <name>
+    reviewed: <YYYY-MM-DD>

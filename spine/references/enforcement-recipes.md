@@ -68,33 +68,90 @@ single test is worth more than most of the rest.
 
 ---
 
-## 3. Import direction + the baseline ratchet
+## 3. The layer map + the baseline ratchet
 
 The test that turns a folder structure into architecture — and the technique that
 makes a retrofit possible without a big-bang move.
 
 ```python
 # tests/uniformity/test_import_direction.py
-LAYERS = ["transports", "modules", "spine", "adapters"]   # may import rightward only
+"""The architecture ratchet: today's violations are the ceiling.
 
-BASELINE = Path("tests/uniformity/baseline_violations.txt").read_text().split()
+WHY: behavioural tests cannot see drift, because drift is made of individually
+correct code. A second implementation passes CI.
 
-def test_import_direction():
-    current = set(scan_imports_violating_layer_order(LAYERS))
-    new = current - set(BASELINE)
-    assert not new, f"New layering violations: {new}"        # never grows
-    assert len(current) <= len(BASELINE)                     # only shrinks
+HOW: violations are frozen in baseline_violations.txt. No new entry may appear,
+the count may never grow, and no stale entry may remain.
 
-def test_no_cross_module_imports():
-    assert not imports_between("modules/*", "modules/*")
+REJECTED RULES: <a rule you considered and why it would fail your best module>
+
+BLIND SPOTS: import rules cannot see semantic duplication — two modules each
+defining create_api_key import nothing illegal.
+
+REGENERATE after fixing violations:  python -m tests.uniformity.test_import_direction
+"""
+import ast, pathlib
+
+# Declared from what THIS repository has today. Lower rank = closer to the edge.
+# A module may import its own rank or below — never above.
+LAYERS = (
+    (0, "transport",     ("app/api/",)),
+    (1, "orchestration", ("app/services/", "app/tasks/")),
+    (2, "domain",        ("app/gateway/", "app/access/")),      # domain-named spines
+    (3, "foundation",    ("app/db/", "app/schemas/", "app/config/")),
+)
+COMPOSITION_ROOT = "app/main.py"    # wiring everything is its job
+VENDOR_MODULES = {"boto3", "openai", "anthropic", "litellm", "qdrant_client"}
+ADAPTER_PREFIXES = ("app/adapters/",)
+
+def violations() -> set[str]:
+    found = set()
+    for path in source_files():
+        if path == COMPOSITION_ROOT:
+            continue
+        for node in ast.walk(ast.parse(path.read_text())):   # walk = function-local imports COUNT
+            for target in imported_modules(node):
+                if rank(target) is not None and rank(target) < rank(path):
+                    found.add(f"LAYER  {path} -> {target}")
+                if top_level(target) in VENDOR_MODULES and not path.startswith(ADAPTER_PREFIXES):
+                    found.add(f"VENDOR {path} -> {target}")
+    return found
+
+BASELINE = pathlib.Path(__file__).with_name("baseline_violations.txt")
+
+def test_no_new_violations():
+    new = violations() - load(BASELINE)
+    assert not new, f"New violations (fix them, or add with a reason in the commit): {sorted(new)}"
+
+def test_count_never_grows():
+    assert len(violations()) <= len(load(BASELINE))
+
+def test_no_stale_entries():
+    stale = load(BASELINE) - violations()
+    assert not stale, f"Fixed — remove from baseline and regenerate: {sorted(stale)}"
+
+if __name__ == "__main__":
+    BASELINE.write_text("\n".join(sorted(violations())) + "\n")
 ```
 
 Rules of use:
 
-- Generate the baseline **once**, on the day you create `spine/`.
-- Every migration commit removes lines from it. The file's line count is the best
-  single progress number you have — measured, not asserted.
-- Never append to it. A new violation is the failure the test exists to catch.
+- **Declare layers from what exists**, not from the ideal layout. The map is a
+  description of today with a direction attached.
+- **The baseline is a ceiling, not a target.** The stale-entry test is what makes
+  that true: without it, a fixed violation stays listed and the headroom silently
+  returns for someone to spend.
+- **Adding an entry is allowed, deliberately.** A violation that is genuinely
+  correct may be added — with the reason in the commit message. Adding a line
+  grants permission for drift; it should be visible in review.
+- **A rule your best module would fail is a bad rule.** Record the rejection in the
+  docstring so the next agent does not re-propose it.
+- **Scope rules narrowly and name them** (`LAYER`, `VENDOR`, `EGRESS`). A baseline
+  entry for one rule — say ad-hoc HTTP clients outside the gateway — doubles as that
+  migration's progress bar.
+- **Verify the test bites**: add a probe module that breaks each rule and confirm the
+  failure names it; add a fixed entry to the baseline and confirm the stale check
+  fails. Then delete the probe.
 
 ---
 
@@ -165,3 +222,31 @@ def test_exemptions_do_not_widen():
     assert set(current_exemptions()) <= set(EXEMPTIONS)
     assert len(EXEMPTIONS) <= 12       # a number someone has to argue to raise
 ```
+
+---
+
+## 8. The spine-map integrity test
+
+The spine map is the registry of registries, so it gets a registry's test.
+
+```python
+# tests/uniformity/test_spine_map.py
+SPINES = parse_markdown_table("docs/spines.md")     # or a YAML/TOML file
+
+def test_every_spine_in_the_map_is_real():
+    for row in SPINES:
+        assert pathlib.Path(row.package).is_dir(),     f"{row.spine}: package missing"
+        assert resolves(row.registry),                 f"{row.spine}: registry {row.registry} not found"
+        assert resolves(row.resolver),                 f"{row.spine}: resolver {row.resolver} not found"
+        assert pathlib.Path(row.enforcement).exists(), f"{row.spine}: enforcement test missing"
+        assert row.owns and row.does_not_own,          f"{row.spine}: boundary not stated"
+
+def test_no_generic_spine_packages():
+    for name in ("spine", "core", "common", "shared", "misc", "utils"):
+        assert not any(p.name == name for p in top_level_packages()), \
+            f"'{name}/' has no boundary in its name — name the spine for what it governs"
+```
+
+Adjust the generic-name list to the repository: if a `core/` package already exists
+and is not a spine, put it on the exemption list with its reason rather than
+pretending it is not there.
