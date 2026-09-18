@@ -50,6 +50,8 @@ needs it.
 - **Done needs evidence**: a commit, PR or test run in a comment, not just a moved card.
 - **Asides become Backlog cards** immediately, checked against the code.
 - **Session start = rehydrate** from the board, and reconcile stale cards against the code.
+- **Pinning itself to a project**: on first run it offers to add a Musaad block to `CLAUDE.md`, so
+  later sessions need no setup — with your say-so, never unasked.
 - **The API's sharp edges**: new items land in To Do, not Backlog; only `transition_item` changes
   state; `start_board` makes a new board; `sharing` takes a `resource_id`; tags replace; no `bug`
   type.
@@ -113,9 +115,16 @@ on work in Musaad, or invoke it directly with `/musaad`.
 
 ### Pin a project to its board (recommended)
 
-Copy [`assets/claude-md-block.md`](assets/claude-md-block.md) into your project's `CLAUDE.md` and
-fill in the board and roadmap ids. Ask Claude *"what are the ids of my Musaad boards and roadmaps?"*
-to get them. Every session then uses the same board without asking.
+**Claude offers this itself.** The first time the skill runs in a project whose `CLAUDE.md` has no
+Musaad block, Claude asks whether to add one — and on a yes it writes the block with your board and
+roadmap ids filled in, leaving the rest of the file alone. Say no and it drops the subject. It never
+edits `CLAUDE.md` without asking.
+
+To do it by hand instead, copy [`assets/claude-md-block.md`](assets/claude-md-block.md) into your
+project's `CLAUDE.md` and fill in the ids — ask Claude *"what are the ids of my Musaad boards and
+roadmaps?"* to get them.
+
+Either way, every session then uses the same board without being told.
 
 ---
 

@@ -33,6 +33,30 @@ A bug is a board task (Backlog) unless it is big enough to plan.
 
 In the tools, a board is called a **workspace** (`workspace_id`). Same thing.
 
+## First run in a project — offer to pin it
+
+The very first time this skill runs in a project, check whether the project's `CLAUDE.md` already
+has a Musaad block (grep it for "Musaad"). If it does, use the ids in it and say nothing more.
+
+If it does not, once you know which board (and roadmap) this project uses — ask if it is not
+obvious — **offer to write it down**, in one line:
+
+> "Want me to add a Musaad block to CLAUDE.md so every session tracks work on *&lt;board&gt;*
+> without being asked? It pins the board and roadmap ids and the tracking rules."
+
+On yes: append `assets/claude-md-block.md` to the project's `CLAUDE.md` (create the file if there
+is none), filling in the real names and **full UUIDs**, and keep the user's existing content
+untouched. Say what you added in one line.
+
+On no, or no answer: carry on and do not ask again this session. Never edit `CLAUDE.md`
+unasked — it is the user's file, it is usually committed, and a project may deliberately keep
+tracking out of it.
+
+If the pinned board and the board the user just named disagree, do not silently pick one — say so
+and ask which it is, then offer to update the block if they are switching.
+
+Re-offer later only if the project moves to a different board, or the pinned ids stop resolving.
+
 ## The loop
 
 1. **Start of session — rehydrate.** `maydan_board.get_board(workspace_id)` once. Read the

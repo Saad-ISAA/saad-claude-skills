@@ -1,3 +1,6 @@
+<!-- Append this to the project's CLAUDE.md, filling in the names and full UUIDs.
+     Claude offers to do this on its first run in a project; it never adds it unasked. -->
+
 ## Work tracking — Musaad
 
 This project's work is tracked in Musaad through the `musaad` MCP server. Use the `musaad` skill.
