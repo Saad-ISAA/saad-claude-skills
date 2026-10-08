@@ -136,3 +136,34 @@ Report from these, not from memory. Say what moved, what is blocked and on whom,
 
 Before the session ends, for every card you touched: state is right, description is current, the
 last comment says what is next. The next session starts at recipe 0 and should need nothing else.
+
+## 10. A delivery lesson worth keeping
+
+The rule (delivery lessons go to Musaad, engineering lessons go to the repo) is in SKILL.md.
+This is the call sequence.
+
+```
+maydan_lessons.list_repository(q="vendor export")          # has this been learned before?
+maydan_lessons.create_board_lesson(
+    workspace_id=B,
+    title="Vendor needs three weeks' notice for data exports",
+    what_happened="The export was requested on the 3rd and arrived on the 24th; go-live slipped.",
+    recommendation="Request vendor exports when the migration is planned, not when it starts.",
+    category="procurement", effect="hurt",
+    sources=[{"kind": "item", "id": CARD}, {"kind": "meeting", "id": MOM, "anchor": "14:10"}])
+```
+
+Meeting suggestions: `list_meeting_lessons(mom_id)`. Show the user the `proposed` lessons, then
+`review_lesson(lesson_id, decision="accept" | "dismiss")` on their word.
+
+## 11. From a meeting to the board
+
+```
+meetings.get(mom_id=M)                                       # what was decided
+meetings.propose_board_changes(workspace_id=B, mom_id=M)    # one AI run; nothing written
+# show the user preview.ops[i] (describes delta.ops[i]); keep what they accept
+meetings.apply_board_changes(workspace_id=B, delta={"ops": kept}, source=proposal["source"])
+```
+
+For one or two action items, `meetings.create_tasks` is simpler. Check each op's `status` in the
+result. Each op fails or succeeds on its own.

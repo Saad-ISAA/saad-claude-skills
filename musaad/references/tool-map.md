@@ -81,7 +81,7 @@ Boards can customise states and add guards. Always read the real ones from `get_
 - `add_link` `target_type`: `workspace` (every leaf on the board), `phase` (every leaf in the phase),
   `work_item` (its children, or itself if it has none). Progress = done leaves / total leaves.
 
-## Plans, projects, meetings, Spaces, sharing
+## Plans, projects, meetings, lessons, Spaces, sharing
 
 | Tool | Actions | Notes |
 |---|---|---|
@@ -89,9 +89,13 @@ Boards can customise states and add guards. Always read the real ones from `get_
 | `regenerate_section(plan_id, section, instructions)`, `preview_item_edit`, `apply_item_edit` | — | Change a plan's charter, WBS, risks or glossary; preview before apply |
 | `get_plan_authorization(plan_id)`, `authorize_plan(plan_id, start_date, end_date)` | — | Charter a plan: project + board + baseline in one act, once per plan |
 | `projects` | `list`, `get`, `create`, `update`, `delete`, `attach_board`, `detach_board`, `list_boards`, `set_parent`, `clear_parent` | `kind`: project / program / portfolio. Deleting a project keeps its boards |
-| `meetings` | `list`, `get(mom_id)`, `search(q)`, `export`, `link(mom_id, plan_id)`, `unlink` | Decisions and action items from meetings |
+| `meetings` | `list`, `get(mom_id)`, `search(q)`, `update`, `export`, `link(mom_id, plan_id, workspace_id)`, `unlink`, `list_for_board`, `list_for_plan`, `board_suggestions`, `triage_suggestions`, `create_tasks`, `accept_attendees`, `dismiss_attendees`, `speakers`, `name_speakers(mom_id, actions)`, `propose_board_changes(workspace_id, mom_id)`, `apply_board_changes(workspace_id, delta, source)`, `recording_status`, `talk_time` | Decisions and action items from meetings. `propose_board_changes` spends one AI run and writes nothing. Show the preview, then apply only what the user accepted |
+| `maydan_lessons` | `list_project_lessons`, `list_board_lessons`, `create_project_lesson`, `create_board_lesson` (needs `sources`), `get_lesson`, `update_lesson`, `delete_lesson`, `add_source`, `remove_source`, `list_meeting_lessons(mom_id)`, `propose_from_meeting(mom_id)`, `review_lesson(lesson_id, decision)`, `share_lesson`, `apply_lesson`, `unapply_lesson`, `list_applied`, `list_repository(q)`, `lessons_report` | **Delivery** lessons only, with evidence (see SKILL.md). Engineering lessons stay in the repo |
+| `meeting_agent` | `send_to_meeting`, `list_bots`, `bot_status`, `stop_bot`, `reschedule_bot`, `effective_settings` | A bot that joins an online meeting and records it |
+| `me` | `list_my_items`, `get_capacity`, `set_capacity`, `list_favorites`, `set_favorites`, saved views, `usage`, `get_profile`, `list_calendar_events`, `get_calendar_event`, `list_calendar_connections`, `link_calendar_event(event_id, mom_id)`, `unlink_calendar_event`, `sync_calendar(connection_id)` | The signed-in person's own things. No user id anywhere |
 | `spaces` | `list`, `get`, `create`, `update`, `archive`, `unarchive`, `delete`, `list_members`, `add_member`, `update_member`, `remove_member`, `list_invites`, `move_resource` | Adding someone to a Space gives them everything in it |
 | `sharing` | `list_people`, `share(resource_id, email, role, scoped)`, `update_person`, `remove_person`, `list_invites`, `revoke_invite`, `preview_invite`, `accept_invite` | `share` is also how you invite. Roles: viewer < member < admin < owner |
 
 Anything that changes who can see something — `sharing`, `spaces.add_member`,
-`spaces.move_resource`, `projects.attach_board` — needs the user's go-ahead first.
+`spaces.move_resource`, `projects.attach_board`, `maydan_lessons.share_lesson` — needs the user's
+go-ahead first.

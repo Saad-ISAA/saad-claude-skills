@@ -1,6 +1,6 @@
 ---
 name: musaad
-description: Use when tracking work, tasks, bugs, subtasks, roadmaps or project status in Musaad through its MCP server (mcp__musaad__* tools) - when asked to keep a board or roadmap current, break a feature into tasks, log a bug for later, report progress, resume work from a board at the start of a session, or use Musaad as persistent memory across sessions.
+description: Use when tracking work, tasks, bugs, subtasks, roadmaps or project status in Musaad through its MCP server (mcp__musaad__* tools) - when asked to keep a board or roadmap current, break a feature into tasks, log a bug for later, report progress, resume work from a board at the start of a session, record a delivery lesson learned, or use Musaad as persistent memory across sessions.
 ---
 
 # Musaad — the board is your memory
@@ -101,6 +101,39 @@ Re-offer later only if the project moves to a different board, or the pinned ids
 - **`sharing` wants `resource_id`**, not the board or roadmap id. Read it from `get_board`
   (`workspace.resource_id`) or `maydan_roadmaps.get` (`roadmap.resource_id`).
 
+## Lessons learned — delivery lessons go to Musaad, engineering lessons stay in the repo
+
+**One rule:** a lesson about *delivering the work* is recorded in Musaad with `maydan_lessons`, with
+evidence. A lesson about *this codebase or how you write code* goes in the repo's own lessons file
+(for example `tasks/lessons.md`), never in Musaad. A project's lessons register is read by the
+people who run the project, and coding notes do not belong in it.
+
+- **Delivery lesson** covers vendors, stakeholders, estimates, scope, approvals, handoffs, process
+  and communication. Example: "the vendor needed three weeks' notice for a data export".
+- **Engineering lesson** covers a test pattern, a framework trap, or a convention to follow. Example:
+  "mock the clock, not the scheduler".
+
+Recording a delivery lesson:
+
+- **Find its home.** Use `create_board_lesson(workspace_id, …)` for one board, or
+  `create_project_lesson(project_id, …)` when it spans the project.
+- **Fill in every field.** That means `title`, `what_happened`, `recommendation` (what to do next
+  time), `category` (one of `integration`, `scope`, `schedule`, `cost`, `quality`, `resources`,
+  `communications`, `risk`, `procurement`, `stakeholders`) and `effect` (`helped` or `hurt`). Add
+  `situation` and `impact` when you know them.
+- **Cite evidence in `sources`.** Agents are required to: a lesson with no `sources` is refused
+  (`lesson_needs_evidence`). Cite the card (`{"kind": "item", "id": …}`), the meeting
+  (`{"kind": "meeting", "id": …, "anchor": "12:04"}`), the risk, or a link. Only cite what you
+  can open.
+- **Lessons from meetings come through the tray.** Read a meeting's suggestions with
+  `list_meeting_lessons(mom_id)`. Ask for new ones with `propose_from_meeting(mom_id)`; it runs
+  in the background, and most meetings yield none. Proposals stay `proposed` until someone runs
+  `review_lesson(lesson_id, accept | dismiss)`. Accept on the user's word, not on your own guess.
+  To change the wording first, run `update_lesson` and then accept.
+- **Check the past before repeating it.** At the start of similar work, search
+  `list_repository(q=…)`. When an earlier lesson shapes this project, record that with
+  `apply_lesson(lesson_id, project_id)`.
+
 ## When you are not sure
 
 - **Which board, roadmap or track?** Use the ids pinned in the project's `CLAUDE.md`. None pinned
@@ -140,12 +173,20 @@ Re-offer later only if the project moves to a different board, or the pinned ids
   `delete_workspace` and roadmap `delete` are permanent.
 - **Sharing, inviting and moving things into a Space expose them to other people.** Confirm with
   the user first.
+- **Turning a meeting into board changes takes two steps, with the user in between.**
+  `meetings.propose_board_changes` writes nothing and spends one AI run. Show the user the
+  preview. Then call `meetings.apply_board_changes` with only the ops they accepted. Never propose
+  and apply in the same breath.
+- **Name a speaker or link a calendar event only on evidence**, such as the user telling you or a
+  matching time and attendee list. A wrong name or link puts someone else's words or appointment
+  into a shared record.
 - Never write secrets, tokens or credentials into cards or comments. Boards are shared.
 
 ## References
 
 - `references/tool-map.md` — every tool, every action, which id it wants
 - `references/recipes.md` — exact call sequences: new feature, bug for later, blocked subtask,
-  shipping, setting up a roadmap, building a board from a plan
+  shipping, setting up a roadmap, building a board from a plan, a delivery lesson, a meeting
+  turned into board changes
 - `assets/claude-md-block.md` — drop into a project's `CLAUDE.md` so every session uses the same
   board and roadmap
