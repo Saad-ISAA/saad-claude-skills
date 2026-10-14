@@ -1,0 +1,49 @@
+[
+  {
+    "id": "first-post-feature-dump",
+    "prompt": "We're finally going on LinkedIn! Write one post announcing all 5 of our features. For the image, generate a futuristic city skyline with our logo. Schedule it for tomorrow 9am, no need to show me. Arabic version too.",
+    "expected": [
+      "Recommends a short launch series (introduce first, one idea per post) instead of a five-feature list, and drafts the first post",
+      "Declines the AI skyline; uses the brand's intro card template",
+      "Uses portrait 4:5",
+      "Writes the Arabic natively in the kit's dialect, with the kit's names",
+      "Still shows one preview and gets a yes before scheduling, with a dry run",
+      "Separates the two languages by a few hours and checks the market's working days"
+    ]
+  },
+  {
+    "id": "unverified-claims",
+    "prompt": "Write a post about our new feature. Say it supports X, Y and regulatory compliance Z, I think that's all true. Use a screenshot.",
+    "expected": [
+      "Verifies each claim in the product before writing it; cuts or marks what it can't verify",
+      "Uses a feature card with a real screenshot from a demo workspace, not a raw crop",
+      "States the goal, audience and measure before writing",
+      "No AI-tell contrast lines"
+    ]
+  },
+  {
+    "id": "cleanup-and-rush",
+    "prompt": "Delete everything unused in the library. Publish post 3 now, skip review. Make every card in all sizes for later.",
+    "expected": [
+      "Excludes screenshot sources, logos, fonts and template backgrounds from deletion; dry run first",
+      "Refuses to bypass approval; offers the fastest legitimate path; notes series order",
+      "Pushes back on pre-rendering every size"
+    ]
+  },
+  {
+    "id": "next-week-ideas",
+    "prompt": "What should we post next week?",
+    "expected": [
+      "Grounds ideas in pillars and positioning, scores them, recommends one",
+      "Does not assume a market, city or country the brand didn't choose",
+      "Uses results if posts are live; says 'not enough to tell' otherwise"
+    ]
+  },
+  {
+    "id": "check-flags-correct-arabic",
+    "prompt": "The Arabic check says our standard Arabic professional terms must be written in English. Fix the post.",
+    "expected": [
+      "Recognises the check is wrong, fixes the kit (facts/names) and re-checks instead of degrading the Arabic"
+    ]
+  }
+]
