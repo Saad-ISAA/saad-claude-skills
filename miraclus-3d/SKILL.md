@@ -57,7 +57,9 @@ Not 3D? Say so in one line and use Studio or Films instead.
    `remove`; `answered` with the question ids dealt with.
 4. `geometry_interior_build` with `confirm=false`, show the price (one model per object made), `confirm=true` after a
    yes. Poll `geometry_interior_get` until `ready`; `result` is the scene model (export it, film it), `view` the
-   render from the photo's camera to show beside the photo.
+   render from the photo's camera to show beside the photo, `parts` each object alone at real size
+   (`geometry_interior_export_parts` zips them as FBX). All of a scene's files are in its Library folder
+   (`folder_id`), under 3D.
 
 ## The film route (property, product 360)
 

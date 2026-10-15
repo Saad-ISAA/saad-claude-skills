@@ -29,6 +29,7 @@ All of these work in the token's workspace. Ids are library asset ids.
 | `geometry_interior_get` | `scene_id`. Status (reading, draft, building, ready, failed), the plan (room, objects with box/size_m/position_m/turn_deg/source/same_as), `open_questions`, `to_make`, progress, `result`, `view` |
 | `geometry_interior_update` | `scene_id`, `params`: `scale_object` + `scale_width_m`, `objects` edits, `add` [{label, box, on}], `remove`, `room`, `answered`. Free |
 | `geometry_interior_build` | `scene_id`, `confirm`. Charged per object made (copies once), refunded per failure; reruns reuse what was made |
+| `geometry_interior_export_parts` | `scene_id`, `params.format` (fbx default). Every distinct object of a built scene at its real size, in one zip, saved in the scene's folder |
 | `geometry_interior_list` | The workspace's scenes |
 | `geometry_section_to_dxf` | A model cut at `height` m, as a DXF plan for AutoCAD |
 
