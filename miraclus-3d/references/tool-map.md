@@ -25,6 +25,11 @@ All of these work in the token's workspace. Ids are library asset ids.
 | `geometry_plan_to_model` | `wall_layers`, `opening_layers` (each guessed when left out), `height` (2.8 m), `thickness` (0.15 m). Makes a GLB shell: walls, cut-outs for doors and windows, a floor |
 | `geometry_plan_from_picture` | `asset_id` (a library picture of a plan), `width_m` (outside wall to outside wall). A DXF with hatched walls on A-WALL; text, dimensions and furniture dropped, doors and windows left as gaps. Refuses plans drawn in hairlines |
 | `geometry_find_shots` | `count` (2–12, default 10), `quality`, `eye_height` (1.5 m). Stills of views across the whole model: per room from a corner, then outside and from above; a single object gets product angles. Each with `label`, `kind`, `sees_m2` |
+| `geometry_interior_start` | `asset_id` (the photo), `shell_asset_id` (optional raised plan), `name`. Free; reads depth, names and measures every object in the background |
+| `geometry_interior_get` | `scene_id`. Status (reading, draft, building, ready, failed), the plan (room, objects with box/size_m/position_m/turn_deg/source/same_as), `open_questions`, `to_make`, progress, `result`, `view` |
+| `geometry_interior_update` | `scene_id`, `params`: `scale_object` + `scale_width_m`, `objects` edits, `add` [{label, box, on}], `remove`, `room`, `answered`. Free |
+| `geometry_interior_build` | `scene_id`, `confirm`. Charged per object made (copies once), refunded per failure; reruns reuse what was made |
+| `geometry_interior_list` | The workspace's scenes |
 | `geometry_section_to_dxf` | A model cut at `height` m, as a DXF plan for AutoCAD |
 
 ## The edit menu (`geometry_edit_model` ops)

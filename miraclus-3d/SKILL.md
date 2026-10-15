@@ -45,6 +45,20 @@ Not 3D? Say so in one line and use Studio or Films instead.
    glTF/GLB or OBJ export from that program, and carry on with what you have (a floor plan, a photo).
 8. **You cannot send files anywhere.** Give the download link and say plainly that it has not been sent.
 
+## An interior from a photo
+
+1. `geometry_interior_start` with the photo (and `shell_asset_id` to furnish a raised plan). Free; it reads in the
+   background: poll `geometry_interior_get` until `status` is `draft` (about two minutes).
+2. Show the person the proposal: the room, each object with its size and place and its `source` (measured, guess,
+   yours), and `open_questions`. Ask them the questions, the scale one first ("do you know the real width of the
+   counter?"); one real width rescales everything. Never invent their answers: what they skip keeps the proposal.
+3. Apply answers with `geometry_interior_update`: `scale_object` + `scale_width_m`; object edits (`make`, `size_m`,
+   `position_m`, `turn_deg`, `same_as` to make copies once); `add` for things missed (a box in photo fractions);
+   `remove`; `answered` with the question ids dealt with.
+4. `geometry_interior_build` with `confirm=false`, show the price (one model per object made), `confirm=true` after a
+   yes. Poll `geometry_interior_get` until `ready`; `result` is the scene model (export it, film it), `view` the
+   render from the photo's camera to show beside the photo.
+
 ## The film route (property, product 360)
 
 1. A model: from a photo, a prompt, an upload, or `geometry_plan_to_model` from a DXF or DWG plan (check the layers
