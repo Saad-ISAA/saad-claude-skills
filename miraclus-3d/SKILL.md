@@ -54,7 +54,8 @@ Not 3D? Say so in one line and use Studio or Films instead.
    the same path twice gives the same move, since the route is chosen from the model. `keyframes` (2–6) are the pictures kept.
 3. A shell from a plan is plain white. Before filming, offer to make the keyframes photoreal with `images_change_image`
    ("photoreal interior, real materials, natural light, keep the walls, openings and camera exactly"). It is charged
-   per picture, so confirm first.
+   per picture, so confirm first. Restyle keyframe 1 first, then pass it as `reference_asset_ids` when restyling the
+   others: restyled one by one, each frame gets different furniture and the film dissolves between them.
 4. `films_create_film` with the keyframes in order, the preset (`property` or `product`), and the destination's shape
    (`9:16` for Reels, Stories and TikTok, `1:1` or `4:5` for the feed, `16:9` for YouTube and the web). The film is free until it renders.
 5. `films_approve_shots`, then `films_render_film` with `confirm=false` → a yes → `confirm=true`. After it is
