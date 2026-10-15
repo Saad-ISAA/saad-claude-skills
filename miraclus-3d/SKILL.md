@@ -49,7 +49,9 @@ Not 3D? Say so in one line and use Studio or Films instead.
 
 1. A model: from a photo, a prompt, an upload, or `geometry_plan_to_model` from a DXF or DWG plan (check the layers
    with `geometry_drawing_info` first).
-2. `geometry_camera_path`: orbit or half_orbit for products, push_through or walkthrough for spaces. A move is at most
+2. `geometry_camera_path`: orbit or half_orbit for products, push_through or walkthrough for spaces. For a thin or flat
+   product (a blade, a phone, a board) use half_orbit or dolly_in: a full orbit passes the edge-on view, where the video
+   model loses the shape (the check after stitching flags it). A move is at most
    10 s, so a longer film is several *different* moves (push_through then walkthrough; orbit then dolly_in):
    the same path twice gives the same move, since the route is chosen from the model. `keyframes` (2–6) are the pictures kept.
 3. A shell from a plan is plain white. Before filming, offer to make the keyframes photoreal with `images_change_image`
