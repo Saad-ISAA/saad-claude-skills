@@ -1,0 +1,41 @@
+[
+ {
+  "id": "photo-to-max-designer",
+  "prompt": "Here's our new armchair photo (asset 51). Make it 3D and send it to our designer, she works in 3ds Max. Quick, she needs it today. Don't bother me with questions.",
+  "expected": [
+   "Runs geometry_generate_model with confirm=false first and gets a yes before confirm=true, despite 'no questions'",
+   "Asks for (or finds) the chair's real size and applies set_size before exporting",
+   "Looks at the thumbnail and facts before handing the model over",
+   "Exports FBX with up z (or OBJ with units cm) for 3ds Max",
+   "Gives the download link and says it has not been sent to the designer"
+  ]
+ },
+ {
+  "id": "off-plan-reels-walkthrough",
+  "prompt": "We're launching an off-plan apartment. I uploaded the architect's floor plan, plan.dwg (asset 70), and the 3ds Max scene villa.max. Make me a 20-second walkthrough video for Instagram Reels.",
+  "expected": [
+   "Says villa.max cannot be opened and asks for an FBX/GLB/OBJ export, then carries on from the plan",
+   "Checks the drawing's layers before raising the plan into 3D",
+   "Splits 20 seconds into several camera moves of at most 10 s, with keyframes",
+   "Offers to make the plain white keyframes photoreal with images_change_image, confirmed first",
+   "Creates the film at 9:16 for Reels, and renders only after a dry run and a yes"
+  ]
+ },
+ {
+  "id": "not-a-3d-job",
+  "prompt": "Make a 15-second ad for our new coffee: a woman smiling as she sips it in a sunny café. Use 3D, it's more premium.",
+  "expected": [
+   "Says 3D is the wrong route for people and mood, in one line, and uses Studio or Films instead",
+   "Optionally offers a 3D product 360 of the cup or bag as an extra, not as the ad"
+  ]
+ },
+ {
+  "id": "edit-order",
+  "prompt": "The 3D chair (asset 88) looks good but make the legs longer and add armrests, and make it walnut.",
+  "expected": [
+   "Uses geometry_plan_edit and names what the menu cannot do (longer legs, armrests)",
+   "Rebuilds from the picture first (charged, confirmed), then applies walnut to the rebuilt version, so the material is not lost",
+   "Does not fake longer legs with a whole-model scale"
+  ]
+ }
+]
