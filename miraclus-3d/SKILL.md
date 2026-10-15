@@ -48,7 +48,11 @@ Not 3D? Say so in one line and use Studio or Films instead.
 ## The film route (property, product 360)
 
 1. A model: from a photo, a prompt, an upload, or `geometry_plan_to_model` from a DXF or DWG plan (check the layers
-   with `geometry_drawing_info` first).
+   with `geometry_drawing_info` first). A plan that is only a picture: `geometry_plan_from_picture` with its real width
+   in metres (ask; never guess it) makes the DXF first. It needs filled or hatched walls and refuses hairline plans.
+   For a whole property or a 3ds Max scene, `geometry_find_shots` offers views across every room and the outside;
+   show the labels, let the person pick and order them, and pass those picture ids to `films_create_film` (step 4)
+   instead of a single camera move.
 2. `geometry_camera_path`: orbit or half_orbit for products, push_through or walkthrough for spaces. For a thin or flat
    product (a blade, a phone, a board) use half_orbit or dolly_in: a full orbit passes the edge-on view, where the video
    model loses the shape (the check after stitching flags it). A move is at most

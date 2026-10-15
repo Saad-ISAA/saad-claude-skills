@@ -23,6 +23,8 @@ All of these work in the token's workspace. Ids are library asset ids.
 | `geometry_camera_path` | `path`, `seconds` (1–10), `width`, `height`, `quality` (samples: 16 is a guide, 48 is clean), `eye_height`, `keyframes` (2–6). Returns `keyframes`, `first`, `last` and a `preview` mp4 |
 | `geometry_convert_drawing` | DWG to DXF |
 | `geometry_plan_to_model` | `wall_layers`, `opening_layers` (each guessed when left out), `height` (2.8 m), `thickness` (0.15 m). Makes a GLB shell: walls, cut-outs for doors and windows, a floor |
+| `geometry_plan_from_picture` | `asset_id` (a library picture of a plan), `width_m` (outside wall to outside wall). A DXF with hatched walls on A-WALL; text, dimensions and furniture dropped, doors and windows left as gaps. Refuses plans drawn in hairlines |
+| `geometry_find_shots` | `count` (2–12, default 10), `quality`, `eye_height` (1.5 m). Stills of views across the whole model: per room from a corner, then outside and from above; a single object gets product angles. Each with `label`, `kind`, `sees_m2` |
 | `geometry_section_to_dxf` | A model cut at `height` m, as a DXF plan for AutoCAD |
 
 ## The edit menu (`geometry_edit_model` ops)
