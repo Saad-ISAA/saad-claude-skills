@@ -104,3 +104,4 @@ No positioning context yet? Build it first — `references/positioning-context.m
 | What worked and why | `references/results-review.md` |
 | Library folders, cleanup, sources | `references/library-hygiene.md` |
 | Miraclus errors, limits and quirks | `references/troubleshooting.md` |
+| A product 360, an off-plan or property walkthrough, a 3D model or a CAD drawing | the `miraclus-3d` skill |
