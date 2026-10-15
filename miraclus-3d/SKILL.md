@@ -52,9 +52,11 @@ Not 3D? Say so in one line and use Studio or Films instead.
 2. Show the person the proposal: the room, each object with its size and place and its `source` (measured, guess,
    yours), and `open_questions`. Ask them the questions, the scale one first ("do you know the real width of the
    counter?"); one real width rescales everything. Never invent their answers: what they skip keeps the proposal.
+   Objects with `small: true` are few pixels in the photo: say their model will be rough. Cleaning (`clean`, on by
+   default) redraws each cut-out alone without watermarks before it is made, one picture edit each.
 3. Apply answers with `geometry_interior_update`: `scale_object` + `scale_width_m`; object edits (`make`, `size_m`,
    `position_m`, `turn_deg`, `same_as` to make copies once); `add` for things missed (a box in photo fractions);
-   `remove`; `answered` with the question ids dealt with.
+   `remove`; `answered` with the question ids dealt with; `remake` to make an object again next build (a bad one).
 4. `geometry_interior_build` with `confirm=false`, show the price (one model per object made), `confirm=true` after a
    yes. Poll `geometry_interior_get` until `ready`; `result` is the scene model (export it, film it), `view` the
    render from the photo's camera to show beside the photo, `parts` each object alone at real size
