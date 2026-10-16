@@ -30,6 +30,7 @@ All of these work in the token's workspace. Ids are library asset ids.
 | `geometry_interior_update` | `scene_id`, `params`: `scale_object` + `scale_width_m`, `objects` edits, `add` [{label, box, on}], `remove`, `room`, `answered`. Free |
 | `geometry_interior_build` | `scene_id`, `confirm`. Charged per object made (copies once), refunded per failure; reruns reuse what was made |
 | `geometry_interior_export_parts` | `scene_id`, `params.format` (fbx default). Every distinct object of a built scene at its real size, in one zip, saved in the scene's folder |
+| `geometry_interior_try_maker` | `scene_id`, `params` {object_id, maker}. Another version of one object on the other 3D maker from the same cleaned picture (charged, dry run first); then `geometry_interior_update` with `choose` {object id: model id} and build again (free) |
 | `geometry_interior_list` | The workspace's scenes |
 | `geometry_section_to_dxf` | A model cut at `height` m, as a DXF plan for AutoCAD |
 

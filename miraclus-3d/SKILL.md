@@ -56,7 +56,9 @@ Not 3D? Say so in one line and use Studio or Films instead.
    default) redraws each cut-out alone without watermarks before it is made, one picture edit each.
 3. Apply answers with `geometry_interior_update`: `scale_object` + `scale_width_m`; object edits (`make`, `size_m`,
    `position_m`, `turn_deg`, `same_as` to make copies once); `add` for things missed (a box in photo fractions);
-   `remove`; `answered` with the question ids dealt with; `remake` to make an object again next build (a bad one).
+   `remove`; `answered` with the question ids dealt with; `remake` to make an object again next build (a bad one);
+   `maker` per object (pixal3d or trellis2). For a poor part, `geometry_interior_try_maker` makes it on the other
+   maker to compare; let the person pick (`choose`), then build again.
 4. `geometry_interior_build` with `confirm=false`, show the price (one model per object made), `confirm=true` after a
    yes. Poll `geometry_interior_get` until `ready`; `result` is the scene model (export it, film it), `view` the
    render from the photo's camera to show beside the photo, `parts` each object alone at real size
