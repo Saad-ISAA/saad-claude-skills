@@ -101,7 +101,7 @@ the cheapest tier that still catches the problem.
 | Tier | When | Cost | What runs |
 |---|---|---|---|
 | **0 — nothing** | Docs, copy, config values, renames, generated files | 0 | Skip code-temper entirely; say so in one line. |
-| **1 — default** | Every code change | seconds | The failing test you were going to write anyway, then `crapper --no-coverage --changed` and `dryer --changed`, checked by `quality_ratchet.py --metric complexity`. No test run needed. |
+| **1 — default** | Every code change | seconds | The failing test you were going to write anyway, then `crapper --no-coverage --changed` and `dryer --changed`, checked by `quality_ratchet.py check --partial` (complexity is the default metric). No test run needed. |
 | **2 — on demand** | You touched a function already over the limit, or the user asks | a test run | Coverage-based CRAP (`--metric crap`) on the changed files only. |
 | **3 — deep** | Spine core files (registry, resolver, seam), security code, or the user asks | minutes | `mutator` on those files only. Otherwise nightly. |
 
@@ -129,7 +129,8 @@ day one, so the rule gets switched off. Use the spine's mechanism instead:
 - **Shrink-only.** Regenerate only after genuinely removing debt. Regeneration refuses to
   add an entry or raise a score. Adding one needs a reason in the commit.
 - **Tool:** `scripts/quality_ratchet.py check` (CI) and `regen` (after a fix), with
-  `--metric complexity` (default, no tests needed) or `--metric crap`. It reads crapper's
+  `--metric complexity` (default, no tests needed) or `--metric crap`, and `--partial` when the
+  snapshot came from `crapper --changed` (judges only the modules it covers). It reads crapper's
   `.metrics/crap.edn`. First run on a repo: `regen --init`.
 - **CI scope.** If the repo already has CI, crapper and dryer run with `--changed` on each PR.
   Mutation is slow, so it is never a PR gate.
