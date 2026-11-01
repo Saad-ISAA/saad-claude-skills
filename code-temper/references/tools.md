@@ -1,8 +1,8 @@
-# temper gate tools
+# code-temper gate tools
 
 crapper, dryer and mutator are by Robert C. Martin ("Uncle Bob") and are released under the
 0BSD license: <https://github.com/unclebob/crapper>, <https://github.com/unclebob/dryer>,
-<https://github.com/unclebob/mutator>. temper runs them; it does not bundle or modify them.
+<https://github.com/unclebob/mutator>. code-temper runs them; it does not bundle or modify them.
 
 Three command-line tools, all Python, all handling Python and TypeScript (also Go, Java,
 Rust, Clojure). Each detects the language per file and creates its own `.venv` on first run.

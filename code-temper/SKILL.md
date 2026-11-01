@@ -1,9 +1,9 @@
 ---
-name: temper
-description: Engineering discipline for writing or changing code — make it work (test first, smallest correct change, right data shape), make it right (root cause, behavior tests, then complexity, duplication and mutation gates run as shrink-only ratchets that answer to the spine map), then close out cleanly. Sits underneath /spine and /musaad: it never overrides where code belongs or where work is tracked. Use when the user runs /temper, or asks for disciplined, test-driven, quality-gated changes.
+name: code-temper
+description: Engineering discipline for writing or changing code — make it work (test first, smallest correct change, right data shape), make it right (root cause, behavior tests, then complexity, duplication and mutation gates run as shrink-only ratchets that answer to the spine map), then close out cleanly. Sits underneath /spine and /musaad: it never overrides where code belongs or where work is tracked. Use when the user runs /code-temper, or asks for disciplined, test-driven, quality-gated changes.
 ---
 
-# /temper — work, then right, then clean
+# /code-temper — work, then right, then clean
 
 Every change moves through three stages, in order. Do not start a stage before the
 previous one holds.
@@ -14,17 +14,17 @@ previous one holds.
 
 ## Precedence — read this first
 
-temper governs *how* you change code. It does not decide *where* code goes or *where* work
-is recorded. When a temper rule and another rule disagree, the other rule wins:
+code-temper governs *how* you change code. It does not decide *where* code goes or *where* work
+is recorded. When a code-temper rule and another rule disagree, the other rule wins:
 
-| Question | Owner | Consequence for temper |
+| Question | Owner | Consequence for code-temper |
 |---|---|---|
 | Where does this code belong? | `/spine` and the repo's `CLAUDE.md` | Check the spine map before building anything. "Smallest edit" means smallest *complete* change on the owning spine, never a patch beside it. |
 | Where is the work tracked? | `/musaad` (when the repo pins a board) | No parallel log or todo file. Progress and evidence go in card comments. |
 | Security controls | `/spine-security` | Apply it as well when the change touches one. |
 | Commit, push, deploy | The user | Never push, merge or deploy unasked. Branch and PR rules in `CLAUDE.md` apply. |
 
-If a repo has no spine map and no board, temper stands alone and the first two rows are moot.
+If a repo has no spine map and no board, code-temper stands alone and the first two rows are moot.
 
 ---
 
@@ -94,13 +94,13 @@ Three tools measure what review cannot. Install and commands: `references/tools.
 
 A tool that is not installed is reported as *not run*, never as passed.
 
-## Stay fast — temper must not slow the work down
+## Stay fast — code-temper must not slow the work down
 Quality work that people skip is worth nothing, so every gate has a cost budget and runs at
 the cheapest tier that still catches the problem.
 
 | Tier | When | Cost | What runs |
 |---|---|---|---|
-| **0 — nothing** | Docs, copy, config values, renames, generated files | 0 | Skip temper entirely; say so in one line. |
+| **0 — nothing** | Docs, copy, config values, renames, generated files | 0 | Skip code-temper entirely; say so in one line. |
 | **1 — default** | Every code change | seconds | The failing test you were going to write anyway, then `crapper --no-coverage --changed` and `dryer --changed`, checked by `quality_ratchet.py --metric complexity`. No test run needed. |
 | **2 — on demand** | You touched a function already over the limit, or the user asks | a test run | Coverage-based CRAP (`--metric crap`) on the changed files only. |
 | **3 — deep** | Spine core files (registry, resolver, seam), security code, or the user asks | minutes | `mutator` on those files only. Otherwise nightly. |
