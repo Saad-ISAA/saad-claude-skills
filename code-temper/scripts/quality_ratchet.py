@@ -5,6 +5,8 @@
     quality_ratchet.py regen [--metric crap|complexity] [--baseline PATH] [--crap .metrics/crap.edn] [--limit 10] [--init]
 
 Input is the snapshot crapper writes: {:entries [{:name .. :namespace .. :crap ..}]}.
+--partial is for a snapshot of changed files only (crapper --changed): only baseline entries in
+modules the snapshot covers are judged, and regen merges instead of rewriting the whole baseline.
 --metric complexity needs no test run (crapper --no-coverage), so it is the fast everyday gate;
 --metric crap needs coverage and is the deeper, occasional one. Each has its own baseline file.
 A function is keyed by "namespace::name"; a rename or move is a new entry (crapper has no
@@ -60,6 +62,19 @@ def compare(current, baseline):
     return new, worse, stale
 
 
+def in_scope(key, namespaces):
+    """True when a baseline key's module was analysed (prefix match either way: module vs module.Class)."""
+    ns = key.split("::")[0]
+    return any(ns == n or ns.startswith(n + ".") or n.startswith(ns + ".") for n in namespaces)
+
+
+def scope_baseline(baseline, snapshot, partial):
+    if not partial:
+        return baseline
+    namespaces = {k.split("::")[0] for k in snapshot}
+    return {k: v for k, v in baseline.items() if in_scope(k, namespaces)}
+
+
 def load_baseline(path):
     return json.loads(path.read_text())["scores"] if path.exists() else {}
 
@@ -77,13 +92,14 @@ def cmd_check(current, baseline):
     return 1 if (new or worse or stale) else 0
 
 
-def cmd_regen(current, baseline, path, limit, metric, init):
+def cmd_regen(current, baseline, path, limit, metric, init, kept=None):
     new, worse, _ = compare(current, baseline)
     if (new or worse) and not init:
         print("refusing: regen may only shrink the baseline", file=sys.stderr)
         for k in new + worse:
             print(f"  would add/raise {k}", file=sys.stderr)
         return 1
+    current = {**(kept or {}), **current}
     write_baseline(path, current, limit, metric)
     print(f"baseline: {len(current)} function(s) at or over {limit} ({metric})")
     return 0
@@ -98,16 +114,20 @@ def main(argv=None):
     p.add_argument("--crap", type=Path, default=Path(".metrics/crap.edn"))
     p.add_argument("--limit", type=float, default=10.0)
     p.add_argument("--init", action="store_true")
+    p.add_argument("--partial", action="store_true", help="snapshot covers changed files only")
     a = p.parse_args(argv)
     if not a.crap.exists():
         print(f"{a.crap} not found: run crapper first", file=sys.stderr)
         return 2
     a.baseline = a.baseline or Path(f"tests/uniformity/{a.metric}-baseline.json")
-    current = over_limit(parse_scores(a.crap.read_text(), a.metric), a.limit)
-    baseline = load_baseline(a.baseline)
+    snapshot = parse_scores(a.crap.read_text(), a.metric)
+    current = over_limit(snapshot, a.limit)
+    full = load_baseline(a.baseline)
+    baseline = scope_baseline(full, snapshot, a.partial)
+    kept = {k: v for k, v in full.items() if k not in baseline} if a.partial else None
     if a.command == "check":
         return cmd_check(current, baseline)
-    return cmd_regen(current, baseline, a.baseline, a.limit, a.metric, a.init)
+    return cmd_regen(current, baseline, a.baseline, a.limit, a.metric, a.init, kept)
 
 
 if __name__ == "__main__":

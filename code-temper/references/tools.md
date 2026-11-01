@@ -20,6 +20,7 @@ Run from the project root, on changed files first:
 A=~/.local/share/temper
 
 $A/crapper/crapper --no-coverage --changed     # fast: complexity only, no tests run
+python3 code-temper/scripts/quality_ratchet.py check --partial   # judge only the changed modules
 $A/crapper/crapper --changed --threshold 10   # deeper: needs coverage; exit 2 if any CRAP > 10
 $A/crapper/crapper --no-coverage src/x.py     # complexity only, no test run
 

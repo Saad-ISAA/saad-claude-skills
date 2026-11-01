@@ -31,6 +31,18 @@ class RatchetTest(unittest.TestCase):
             more = no_cov.replace(":complexity 9", ":complexity 12")
             self.assertEqual(run(t, more, "check", "--limit", "9", metric="complexity")[0], 1)
 
+    def test_partial_snapshot_only_judges_modules_it_covers(self):
+        two = EDN.replace("]}", '  {:name "other", :namespace "demo.Other", :complexity 20, :coverage nil, :crap 99.0}\n]}')
+        with tempfile.TemporaryDirectory() as t:
+            run(t, two, "regen", "--init")
+            self.assertEqual(run(t, EDN, "check")[0], 1)  # full run: demo.Other looks stale
+            self.assertEqual(run(t, EDN, "check", "--partial")[0], 0)  # partial: not covered, not judged
+            fixed = EDN.replace(":crap 31.5", ":crap 4.0")
+            self.assertEqual(run(t, fixed, "check", "--partial")[0], 1)  # covered module: stale
+            code, base = run(t, fixed, "regen", "--partial")
+            self.assertEqual(code, 0)
+            self.assertEqual(list(json.loads(base.read_text())["scores"]), ["demo.Other::other"])
+
     def test_init_then_check_passes(self):
         with tempfile.TemporaryDirectory() as t:
             self.assertEqual(run(t, EDN, "regen", "--init")[0], 0)
